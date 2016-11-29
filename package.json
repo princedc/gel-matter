@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "gel-matter",
+  "version": "0.1.0",
+  "description": "BBC GEL team's Matter library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Sinclair",
+  "license": "UNLICENSED"
+}
