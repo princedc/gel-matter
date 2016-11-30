@@ -1,5 +1,9 @@
-import atoms     from './atoms';
+import atoms from './atoms';
 import molecules from './molecules';
 import organisms from './organisms';
 
-export default { atoms, molecules, organisms };
+module.exports = {
+	atoms,
+	molecules,
+	organisms,
+};

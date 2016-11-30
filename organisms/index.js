@@ -1,5 +1,5 @@
-import Masthead from './Masthead.vue';
+import GelMasthead from './Masthead.vue';
 
-export default {
-	Masthead: Masthead,
+module.exports = {
+	GelMasthead,
 };
