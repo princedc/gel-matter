@@ -8,5 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Simon Sinclair",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "gel-grid": "github:bbc/gel-grid",
+    "gel-sass-tools": "github:bbc/gel-sass-tools",
+    "gel-typography": "github:bbc/gel-typography",
+    "sass-mq": "^3.3.1"
+  }
 }
