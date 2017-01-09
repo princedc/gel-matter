@@ -8,7 +8,7 @@
 	// ...
 </script>
 
-<style lang="sass">
+<style lang="sass" rel="stylesheet/scss">
 	@import '../common';
 	.gel-masthead {
 		border-bottom: solid 1px #ccc;
