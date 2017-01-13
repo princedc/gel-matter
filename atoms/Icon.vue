@@ -37,10 +37,6 @@
 </script>
 
 <style lang="sass">
-  body {
-    background-color: #EEE;
-  }
-
   .gel-icon--small {
     height: 16px;
     width: 16px;
@@ -55,8 +51,4 @@
     height: 64px;
     width: 64px;
   }
-
-  /*[class^="gel-icon-"] {*/
-
-  /*}*/
 </style>
