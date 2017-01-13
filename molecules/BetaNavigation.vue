@@ -9,7 +9,7 @@
         </div>
         <div class="gel-guideline-beta-cta gel-layout__item gel-1/3">
           <a class="button gel-long-primer-bold button--clear" href="/gel-styleguide">
-            <gel-icon type="previous" class="" /> Go Back to the old site
+            <gel-icon set="core" icon="previous" size="small" /> Go Back to the old site
           </a>
         </div>
       </div>

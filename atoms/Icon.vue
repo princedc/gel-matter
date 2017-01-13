@@ -1,19 +1,62 @@
 <template>
-  <span class="gel-icon gel-icon--inline gel-icon-fallback-none">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32">
-      <path d="M3 16l26 16v-7.2L14.4 16 29 7.2V0z"/>
-    </svg>
-  </span>
+  <svg :class="`gel-icon--${iconSize}`">
+    <use :xlink:href="`${svgUrl}#gel-icon-${icon}`"></use>
+  </svg>
 </template>
 
 <script>
+  const validSizes = ['small', 'medium', 'large'];
+
   export default {
-    props: ["type", "fallback"]
+    props: {
+      set: {
+        type: String,
+        required: true,
+      },
+      icon: {
+        type: String,
+        required: true,
+      },
+      size: {
+        type: String,
+        default: 'medium',
+        validator: function (value) {
+          return validSizes.indexOf(value) > -1
+        }
+      }
+    },
+    created () {
+      this.svgUrl = require(`gel-iconography-assets/dist/${this.set}/set/gel-icons-${this.set}-set.svg`);
+    },
+    computed: {
+      iconSize: function() {
+        return validSizes.indexOf(this.size) > -1 ? this.size : 'medium';
+      }
+    }
   }
 </script>
 
 <style lang="sass">
-  @import '../common';
+  body {
+    background-color: #EEE;
+  }
 
+  .gel-icon--small {
+    height: 16px;
+    width: 16px;
+  }
 
+  .gel-icon--medium {
+    height: 32px;
+    width: 32px;
+  }
+
+  .gel-icon--large {
+    height: 64px;
+    width: 64px;
+  }
+
+  /*[class^="gel-icon-"] {*/
+
+  /*}*/
 </style>
