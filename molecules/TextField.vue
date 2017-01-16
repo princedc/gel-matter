@@ -1,6 +1,6 @@
 <template>
   <gel-form-field :id="inputId" :label="label" :helpText="helpText"
-                  validation-rules=""
+                  :required="required"
                   :helpTextDetails="helpTextDetails">
     <gel-input-text :id="inputId"
                     v-bind:value="value"
@@ -14,7 +14,7 @@
   import GelFormField from '../molecules/FormField.vue';
 
   export default {
-    components: {GelInputText, GelFormField},
+    components: { GelInputText, GelFormField },
     props: {
       label: {
         type: String,
@@ -25,11 +25,10 @@
       errors: {type: Array},
       id: {type: String},
       value: {type: String},
-      validationRules: Object,
+      required: Boolean,
     },
     computed: {
       inputId: function idGen() {
-        console.log(this.label);
         return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
       },
       hasErrors: function () {

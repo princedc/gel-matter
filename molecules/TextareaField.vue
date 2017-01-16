@@ -1,5 +1,5 @@
 <template>
-  <gel-form-field :id="inputId" :label="label" :helpText="helpText" :helpTextDetails="helpTextDetails">
+  <gel-form-field :id="inputId" :label="label" :helpText="helpText" :helpTextDetails="helpTextDetails" :required="required">
     <gel-textarea :id="inputId"
                   :value="value"
                   v-on:input="updateValue(arguments[0])"
@@ -18,14 +18,16 @@
         type: String,
         default: '',
       },
-      helpText: String,
-      helpTextDetails: String,
-      errors: Array,
       id: {
         type: String,
         required: false,
       },
-      value: { type: String }
+      value: { type: String },
+      helpText: String,
+      helpTextDetails: String,
+      errors: Array,
+      required: Boolean,
+      schema: Object,
     },
     computed: {
       inputId: function idGen() {

@@ -19,7 +19,7 @@
 
 <script>
   export default {
-    props: ["label", "helpText", "helpTextDetails", "errors", "id"],
+    props: ["label", "helpText", "helpTextDetails", "errors", "id", "required"],
     computed: {
       hasErrors: function() {
         return this.errors && this.errors.length;

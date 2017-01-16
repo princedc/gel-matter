@@ -1,5 +1,5 @@
 <template>
-  <gel-form-field :id="inputId" :label="label" :helpText="helpText" :helpTextDetails="helpTextDetails">
+  <gel-form-field :id="inputId" :label="label" :helpText="helpText" :helpTextDetails="helpTextDetails" :required="required">
     <gel-select :id="inputId"
                 :value="value"
                 :options="options"
@@ -27,7 +27,8 @@
         required: false,
       },
       value: String,
-      options: Object,
+      options: Array,
+      required: Boolean,
     },
     computed: {
       inputId: function idGen() {

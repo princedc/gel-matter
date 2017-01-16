@@ -5,7 +5,7 @@
           v-bind:value="value"
           v-on:change="updateValue($event.target.value)"
   >
-    <option v-for="label, value in options" :value="value">{{ label }}</option>
+    <option v-for="option in options" :value="option.value">{{ option.label }}</option>
   </select>
   </div>
 </template>
