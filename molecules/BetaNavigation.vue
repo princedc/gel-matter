@@ -8,9 +8,9 @@
             example <a href="">Design Patterns</a>.</p>
         </div>
         <div class="gel-guideline-beta-cta gel-layout__item gel-1/3">
-          <a class="button gel-long-primer-bold button--clear" href="/gel-styleguide">
+          <gel-link-button href="/gel-styleguide">
             <gel-icon set="core" icon="previous" size="small" /> Go Back to the old site
-          </a>
+          </gel-link-button>
         </div>
       </div>
     </div>
@@ -19,9 +19,10 @@
 
 <script>
   import GelIcon from '../atoms/Icon.vue';
+  import GelLinkButton from '../atoms/LinkButton.vue';
 
   export default {
-    components: {GelIcon}
+    components: {GelIcon, GelLinkButton}
   }
 </script>
 
@@ -51,18 +52,6 @@
     }
   }
 
-  a.button {
-    @include gel-typography('long-primer-bold');
-    color: #404040;
-    border: solid 1px #404040;
-    padding: 16px;
-    display: inline-block;
-    text-decoration: none;
 
-    &:hover {
-      text-decoration: underline;
-      color: #121212;
-    }
-  }
 
 </style>
