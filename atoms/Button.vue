@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes">
+  <button :class="classes" v-on:click="handleClick">
     <slot/>
   </button>
 </template>
@@ -23,6 +23,12 @@
           'gel-button',
           'gel-button--' + this.type
         ]
+      }
+    },
+    methods: {
+      handleClick: function(e) {
+        e.preventDefault();
+        this.$emit('click', e);
       }
     }
   }

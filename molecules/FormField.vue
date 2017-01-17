@@ -11,9 +11,7 @@
           <p v-if="helpTextDetails">{{ helpTextDetails }}</p>
         </div>
       </div>
-      </div>
-
-
+    </div>
   </div>
 </template>
 

@@ -27,6 +27,7 @@
   @import '../common';
 
   .gel-select {
+    box-sizing: border-box;
     border: 1px solid #000;
     width: 100%;
     border-radius: 0;
