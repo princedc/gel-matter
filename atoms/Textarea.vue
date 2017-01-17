@@ -18,7 +18,7 @@
   }
 </script>
 
-<style lang="sass" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
   @import '../common';
 
   .gel-textarea {

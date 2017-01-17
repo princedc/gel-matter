@@ -36,7 +36,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="scss">
   .gel-icon--small {
     height: 16px;
     width: 16px;
