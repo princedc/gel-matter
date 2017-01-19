@@ -19,6 +19,7 @@ $gel-type-enable--base-elements: false;
 @import 'node_modules/gel-sass-tools/sass-tools';
 @import 'node_modules/sass-mq/mq';
 
+@import '~normalize.css';
 
 /**
  * Foundations
