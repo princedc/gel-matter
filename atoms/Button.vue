@@ -17,6 +17,9 @@
         }
       }
     },
+    data: function() {
+      return { something: 'value' }
+    },
     computed: {
       classes: function() {
         return [

@@ -2,14 +2,29 @@
     <textarea v-bind:id="id"
               v-bind:value="value"
               v-on:input="updateValue($event.target.value)"
-              class="gel-textarea"
+              :class="classes"
               rows="3"
     ></textarea>
 </template>
 
 <script>
   export default {
-    props: ["value", "id"],
+    props: {
+      value: String,
+      id: String,
+      errors: {
+        type: Array,
+        default: function() {return [];}
+      }
+    },
+    computed: {
+      classes: function() {
+        return {
+          'gel-textarea': true,
+          'is-invalid': this.errors.length > 0,
+        }
+      }
+    },
     methods: {
       updateValue: function(value) {
         this.$emit('input', value);
@@ -22,7 +37,6 @@
   @import '../common';
 
   .gel-textarea {
-    box-sizing: border-box;
     border: solid 1px black;
     padding: 12px;
     width: 100%;

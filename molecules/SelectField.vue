@@ -1,7 +1,13 @@
 <template>
-  <gel-form-field :id="inputId" :label="label" :helpText="helpText" :helpTextDetails="helpTextDetails" :required="required">
+  <gel-form-field :id="inputId"
+                  :label="label"
+                  :errors="errors"
+                  :helpText="helpText"
+                  :helpTextDetails="helpTextDetails"
+                  :required="required">
     <gel-select :id="inputId"
                 :value="value"
+                :errors="errors"
                 :options="options"
                 v-on:input="updateValue(arguments[0])"
     />

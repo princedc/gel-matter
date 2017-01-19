@@ -34,12 +34,14 @@
 
   .gel-form-field {
     margin-bottom: 48px;
+
+    .gel-input-label {
+      @include gel-typography('pica-bold');
+      margin-bottom: 8px;
+      display: block;
+    }
   }
 
-  .gel-input-label {
-    @include gel-typography('pica-bold');
-    margin-bottom: 8px;
-    display: block;
-  }
+
 </style>
 

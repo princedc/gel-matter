@@ -3,15 +3,28 @@
            type="text"
            v-bind:value="value"
            v-on:input="updateValue($event.target.value)"
-           class="gel-input"
+           :class="classes"
     />
 </template>
 
 <script>
   export default {
-    props: ["type","value", "id"],
+    props: {
+      type: String,
+      value: String,
+      id: String,
+      errors: {
+        type: Array,
+        default: function() { return []; },
+      }
+    },
     computed: {
-
+      classes: function () {
+        return {
+          'gel-input': true,
+          'is-invalid': this.errors.length > 0,
+        }
+      }
     },
     methods: {
       updateValue: function(value) {
@@ -25,7 +38,6 @@
   @import '../common';
 
   .gel-input {
-    box-sizing: border-box;
     border: solid 1px black;
     padding: 12px;
     width: 100%;

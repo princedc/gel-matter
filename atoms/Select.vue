@@ -1,5 +1,5 @@
 <template>
-  <div class="gel-select">
+  <div :class="classes">
     <gel-icon set="core" icon="down" size="small" class="gel-select__icon" />
   <select class=""
           v-bind:value="value"
@@ -14,7 +14,22 @@
   import GelIcon from './Icon.vue';
   export default {
     components: { GelIcon },
-    props: ["value", "options"],
+    props: {
+      value: String,
+      options: Array,
+      errors: {
+        type: Array,
+        default: function() {return [];}
+      }
+    },
+    computed: {
+      classes: function() {
+        return {
+          'gel-select': true,
+          'is-invalid': this.errors.length > 0,
+        }
+      }
+    },
     methods: {
       updateValue: function(value) {
         this.$emit('input', value);
@@ -27,7 +42,6 @@
   @import '../common';
 
   .gel-select {
-    box-sizing: border-box;
     border: 1px solid #000;
     width: 100%;
     border-radius: 0;
@@ -63,5 +77,9 @@
 
   .gel-select select:focus {
     outline: none;
+  }
+
+  .is-invalid {
+    border-color: red;
   }
 </style>

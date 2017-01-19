@@ -1,7 +1,14 @@
 <template>
-  <gel-form-field :id="inputId" :label="label" :helpText="helpText" :helpTextDetails="helpTextDetails" :required="required">
+  <gel-form-field :id="inputId"
+                  :label="label"
+                  :errors="errors"
+                  :helpText="helpText"
+                  :helpTextDetails="helpTextDetails"
+                  :required="required"
+  >
     <gel-textarea :id="inputId"
                   :value="value"
+                  :errors="errors"
                   v-on:input="updateValue(arguments[0])"
     />
   </gel-form-field>
@@ -49,7 +56,6 @@
   @import '../common';
 
   .gel-input {
-    box-sizing: border-box;
     border: solid 1px black;
     padding: 12px;
     width: 100%;

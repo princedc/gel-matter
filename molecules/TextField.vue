@@ -1,8 +1,10 @@
 <template>
   <gel-form-field :id="inputId" :label="label" :helpText="helpText"
                   :required="required"
+                  :errors="errors"
                   :helpTextDetails="helpTextDetails">
     <gel-input-text :id="inputId"
+                    :errors="errors"
                     v-bind:value="value"
                     v-on:input="updateValue(arguments[0])"
     />
