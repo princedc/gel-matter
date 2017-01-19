@@ -16,8 +16,14 @@ $gel-type-enable--base-elements: true;
 /**
  * Dependencies.
  */
-@import 'node_modules/gel-sass-tools/sass-tools';
-@import 'node_modules/sass-mq/mq';
+
+// "~" tells Webpack to import this 'like' a module.
+@import '~gel-sass-tools';
+@import '~sass-mq';
+
+/**
+ * Generic
+ */
 
 @import '~normalize.css';
 
@@ -34,5 +40,5 @@ html {
 /**
  * Foundations
  */
-@import 'node_modules/gel-typography/typography';
-@import 'node_modules/gel-grid/grid';
+@import '~gel-typography';
+@import '~gel-grid';
