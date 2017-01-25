@@ -1,11 +1,18 @@
 <template>
-  <button :class="classes" v-on:click="handleClick" :disabled="disabled">
+  <button
+    class="gel-button"
+    :class="classes"
+    v-on:click="handleClick"
+    :disabled="disabled"
+  >
     <div class="gel-button__icon" v-if="icon || $slots.icon">
       <slot name="icon">
-        <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small" />
+        <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small"></gel-icon>
       </slot>
     </div>
-    <slot/>
+
+    <slot></slot>
+    
   </button>
 </template>
 
@@ -38,7 +45,6 @@
     computed: {
       classes() {
         return {
-          'gel-button': true,
           [`gel-button--${this.type}`]: true,
           'is-disabled': this.disabled,
         };
