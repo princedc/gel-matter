@@ -53,17 +53,5 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-  @import '../common';
 
-  .gel-input {
-    border: solid 1px black;
-    padding: 12px;
-    width: 100%;
-    background: #fff;
-    @include gel-typography('pica');
-
-    .is-invalid & {
-      border: solid 1px red;
-    }
-  }
 </style>
