@@ -14,6 +14,7 @@
     "gel-iconography-assets": "github:bbc/gel-iconography-assets",
     "gel-sass-tools": "github:bbc/gel-sass-tools",
     "gel-typography": "github:bbc/gel-typography",
+    "in-view": "^0.6.1",
     "normalize.css": "^5.0.0",
     "sass-mq": "^3.3.1"
   }

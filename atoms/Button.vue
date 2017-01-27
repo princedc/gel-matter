@@ -57,6 +57,11 @@
     }
   }
 
+  .gel-button--transparent {
+    background: transparent;
+    padding: 0;
+  }
+
   .gel-button--publish {
     background: rgba(0, 143, 17, 0.8);
     color: #fff;
