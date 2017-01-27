@@ -6,17 +6,19 @@
         <slot />
       </div>
       <div class="gel-layout__item gel-1/1 gel-1/2@m">
-        <div class="gel-break-out-box">
-          <h4>{{ helpText }}</h4>
-          <p v-if="helpTextDetails">{{ helpTextDetails }}</p>
-        </div>
+        <gel-breakout-box :helpText="helpText"
+                          :helpTextDetails="helpTextDetails"
+          />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import GelBreakoutBox from '../atoms/BreakoutBox.vue';
+
   export default {
+    components: { GelBreakoutBox },
     props: ["label", "helpText", "helpTextDetails", "errors", "id", "required"],
     computed: {
       hasErrors: function() {
