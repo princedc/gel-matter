@@ -16,6 +16,7 @@
     "gel-typography": "github:bbc/gel-typography",
     "in-view": "^0.6.1",
     "normalize.css": "^5.0.0",
-    "sass-mq": "^3.3.1"
+    "sass-mq": "^3.3.1",
+    "vue-select": "sagalbot/vue-select#vue2"
   }
 }
