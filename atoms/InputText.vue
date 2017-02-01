@@ -1,5 +1,5 @@
 <template>
-    <input v-bind:id="id"
+    <input :id="id"
            type="text"
            v-bind:value="value"
            v-on:input="updateValue($event.target.value)"
