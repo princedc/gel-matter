@@ -2,8 +2,10 @@
   <div :class="classes">
     <gel-icon set="core" icon="down" size="small" class="gel-select__icon" />
   <select class=""
-          v-bind:value="value"
-          v-on:change="updateValue($event.target.value)"
+          :value="value"
+          @change="updateValue($event.target.value)"
+          @focus="selectIsFocused = true"
+          @blur="selectIsFocused = false"
   >
     <option v-for="option in options" :value="option.value">{{ option.label }}</option>
   </select>
@@ -14,6 +16,11 @@
   import GelIcon from './Icon.vue';
   export default {
     components: { GelIcon },
+    data: function() {
+      return {
+        selectIsFocused: false,
+      }
+    },
     props: {
       value: String,
       options: Array,
@@ -27,6 +34,7 @@
         return {
           'gel-select': true,
           'is-invalid': this.errors.length > 0,
+          'is-focused': this.selectIsFocused,
         }
       }
     },
@@ -77,6 +85,10 @@
 
   .gel-select select:focus {
     outline: none;
+  }
+
+  .gel-select.is-focused {
+    @include form-field-outline;
   }
 
   .is-invalid {

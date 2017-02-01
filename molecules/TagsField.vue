@@ -5,7 +5,7 @@
                   :helpText="helpText"
                   :helpTextDetails="helpTextDetails"
                   :required="required">
-    <v-select :id="inputId"
+    <input-tags :id="inputId"
               :value="value"
               :options="options"
               v-on:input="updateValue(arguments[0])"
@@ -14,11 +14,11 @@
 </template>
 
 <script>
-  import VSelect from '../atoms/InputTags.vue';
+  import InputTags from '../atoms/InputTags.vue';
   import GelFormField from '../molecules/FormField.vue';
 
   export default {
-    components: {VSelect, GelFormField},
+    components: {InputTags, GelFormField},
     props: {
       label: {
         type: String,
@@ -31,7 +31,7 @@
         type: String,
         required: false,
       },
-      value: String,
+      value: Array,
       options: Array,
       required: Boolean,
     },

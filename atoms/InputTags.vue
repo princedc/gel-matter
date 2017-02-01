@@ -1,36 +1,25 @@
 <template>
-  <div style="position: relative;">
-    <gel-icon set="core" icon="down" size="small" class="gel-tags__handle" />
-    <v-select :id="inputId"
-              class="gel-tags"
+  <div style="position: relative;" class="gel-tags">
+    <v-select :id="id"
               multiple
               :value="value"
               :options="options"
               v-on:input="updateValue(arguments[0])"
+              taggable
     />
   </div>
 </template>
 
 <script>
   import GelIcon from './Icon.vue';
-  import VSelect from 'vue-select/src/components/Select.vue';
+  import VSelect from './VueSelect.vue';
 
   export default {
     components: { GelIcon, VSelect },
     props: {
-      value: String,
       options: Array,
-      errors: {
-        type: Array,
-        default: function() {return [];}
-      }
-    },
-    computed: {
-      classes: function() {
-        return {
-          'is-invalid': this.errors.length > 0,
-        }
-      }
+      id: String,
+      value: Array,
     },
     methods: {
       updateValue: function(value) {
@@ -53,9 +42,8 @@
     clear: both;
   }
 
-  .v-select {
-    padding: 12px;
-    border: 1px solid $gel-color--black;
+  .v-select.open {
+    @include form-field-outline;
   }
 
   .gel-tags__handle {
@@ -67,6 +55,7 @@
 
   .gel-tags.gel-tags {
     position: relative;
+    border: 1px solid $gel-color--black;
 
     [type="button"] {
       -webkit-appearance: initial;
@@ -74,8 +63,9 @@
       border: 0;
     }
 
-    input {
+    input[type=search], input[type=search]:focus {
       @include gel-typography('pica');
+      padding: 24px 12px;
     }
 
     .selected-tag {
@@ -83,9 +73,11 @@
       color: $gel-color--white;
       border-radius: 0;
       border: 0;
-      margin: 0 12px 0 0;
+      margin: 12px 0 0 12px;
       height: auto;
+      padding: 12px;
       @include gel-typography('pica');
+      display: flex;
     }
 
     .close {
@@ -93,6 +85,8 @@
       border: 0;
       cursor: pointer;
       color: $gel-color--white;
+      fill: currentColor;
+      margin-left: 12px;
     }
 
     .open-indicator {
@@ -107,14 +101,14 @@
       border: solid 1px $gel-color--black;
       list-style: none;
       margin-left: 0;
-      padding: 12px;
+      padding: 12px 0;
       width: calc(100% + 2px);
       z-index: $gel-z-index-6--dropdown;
 
       li a, li a:visited {
         @include gel-typography('pica');
         background: $gel-color--white;
-        padding: 3px 0;
+        padding: 3px 12px;
         display: block;
         color: $gel-color--tundora;
       }
@@ -124,7 +118,8 @@
       }
 
       li.active a {
-        background: $gel-color--gallery;
+        background: $gel-color--cod-gray;
+        color: $gel-color--white;
       }
     }
   }
