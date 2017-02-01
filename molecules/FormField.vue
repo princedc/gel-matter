@@ -38,7 +38,7 @@
   @import '../common';
 
   .gel-form-field {
-    margin-bottom: 48px;
+    margin-bottom: 18px;
 
     .gel-input-label {
       @include gel-typography('pica-bold');
@@ -49,13 +49,16 @@
       margin-bottom: 8px;
       display: block;
     }
+
+    .gel-break-out-box {
+      margin-top: 30px;
+    }
   }
 
   .gel-form-field__errors {
     color: $gel-color--errorRed;
     @include gel-typography('pica');
   }
-
 
 </style>
 
