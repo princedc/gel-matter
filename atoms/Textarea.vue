@@ -37,14 +37,14 @@
   @import '../common';
 
   .gel-textarea {
-    border: solid 1px black;
+    border: solid 1px $gel-color--black;
     padding: 12px;
     width: 100%;
     background: #fff;
     @include gel-typography('pica');
 
     .is-invalid & {
-      border: solid 1px red;
+      border: solid 1px $gel-color--errorRed;
     }
   }
 </style>

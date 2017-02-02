@@ -1,7 +1,6 @@
 <template>
-  <div style="position: relative;" class="gel-tags" :class="errors ? 'is-invalid' : ''">
+  <div style="position: relative;" class="gel-autosuggest" :class="errors ? 'is-invalid' : ''">
     <v-select :id="id"
-              multiple
               :value="value"
               :options="options"
               v-on:input="updateValue(arguments[0])"
@@ -11,15 +10,14 @@
 </template>
 
 <script>
-  import GelIcon from './Icon.vue';
   import VSelect from './VueSelect.vue';
 
   export default {
-    components: { GelIcon, VSelect },
+    components: { VSelect },
     props: {
       options: Array,
       id: String,
-      value: Array,
+      value: String,
       errors: Array,
     },
     methods: {
@@ -33,20 +31,6 @@
 <style lang="scss" rel="stylesheet/scss">
   @import '../common';
 
-  .clearfix:before,
-  .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-  }
-
-  .clearfix:after {
-    clear: both;
-  }
-
-  .v-select.open {
-    @include form-field-outline;
-  }
-
   .gel-tags__handle {
     position: absolute;
     right: 12px;
@@ -54,9 +38,13 @@
     transform: translateY(-50%);
   }
 
-  .gel-tags.gel-tags {
+  .gel-autosuggest.gel-autosuggest {
     position: relative;
     border: 1px solid $gel-color--black;
+
+    &.is-invalid {
+      border-color: $gel-color--errorRed;
+    }
 
     [type="button"] {
       -webkit-appearance: initial;
@@ -66,19 +54,18 @@
 
     input[type=search], input[type=search]:focus {
       @include gel-typography('pica');
-      padding: 24px 12px;
+      padding: 12px;
     }
 
     .selected-tag {
-      background: $gel-color--tundora;
-      color: $gel-color--white;
+      background: none;
+      color: $gel-color--black;
       border-radius: 0;
       border: 0;
-      margin: 12px 0 0 12px;
       height: auto;
-      padding: 12px;
       @include gel-typography('pica');
       display: flex;
+      padding: 12px;
     }
 
     .close {

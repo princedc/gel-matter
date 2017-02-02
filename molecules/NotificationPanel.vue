@@ -1,5 +1,5 @@
 <template>
-  <transition appear name="slide-fade" v-on:after-enter="afterEnter" v-on:after-leave="afterExit">
+  <transition appear name="slide-fade" v-on:after-enter="afterEnter" v-on:before-leave="beforeExit">
     <div :class="classes" v-show="visible" ref="notificationPanel">
       <gel-notification :message="message" :type="type" @dismiss="handleDismiss">
         <div class="gel-layout">
@@ -74,13 +74,15 @@
       },
       afterEnter: function () {
         if (typeof window !== 'undefined') {
+          placeHolder.classList.remove('slide-fade-leave-active');
           console.log('updating height to: ', this.$el, `${this.$el.offsetHeight}px`);
           placeHolder.style.height = `${this.$el.offsetHeight}px`;
           inView.offset(this.$el.offsetHeight);
 
         }
       },
-      afterExit: function () {
+      beforeExit: function () {
+        placeHolder.classList.add('slide-fade-leave-active');
         placeHolder.style.height = 0
       },
       handleDismiss: function () {
