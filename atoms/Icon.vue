@@ -1,6 +1,6 @@
 <template>
   <svg :class="`gel-icon--${iconSize}`">
-    <use :xlink:href="`${svgUrl}#gel-icon-${icon}`"></use>
+    <use :style="{ fill: color }" :xlink:href="`${svgUrl}#gel-icon-${icon}`"></use>
   </svg>
 </template>
 
@@ -9,6 +9,9 @@
 
   export default {
     props: {
+      color: {
+        type: String,
+      },
       set: {
         type: String,
         required: true,
@@ -50,5 +53,12 @@
   .gel-icon--large {
     height: 64px;
     width: 64px;
+  }
+
+  .gel-icon--inline {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 2px;
   }
 </style>
