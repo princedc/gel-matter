@@ -5,7 +5,7 @@
           :value="value"
           @change="updateValue($event.target.value)"
           @focus="selectIsFocused = true"
-          @blur="selectIsFocused = false"
+          @blur="handleBlur"
   >
     <option v-for="option in options" :value="option.value">{{ option.label }}</option>
   </select>
@@ -41,6 +41,10 @@
     methods: {
       updateValue: function(value) {
         this.$emit('input', value);
+      },
+      handleBlur: function(value) {
+        this.selectIsFocused = false;
+        this.$emit('blur');
       }
     }
   }

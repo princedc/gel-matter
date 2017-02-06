@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <slot></slot>
+    <slot>{{ displayMessage }}</slot>
     <gel-dismiss-button class="gel-notification__dismiss" @click="handleDismiss"></gel-dismiss-button>
   </div>
 </template>
@@ -12,6 +12,19 @@
 
   export default {
     components: {GelDismissButton},
+    beforeUpdate() {
+      if (typeof this.message == 'Array') {
+        console.log(this.message, 'is array');
+        this.$slots.default = this.message;
+      } else {
+        this.displayMessage = this.message;
+      }
+    },
+    data() {
+      return {
+        displayMessage: undefined,
+      };
+    },
     props: {
       type: {
         type: String,

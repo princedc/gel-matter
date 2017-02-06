@@ -1,14 +1,11 @@
 <template>
-  <transition appear name="slide-fade" v-on:after-enter="afterEnter" v-on:before-leave="beforeExit">
-    <div :class="classes" v-show="visible" ref="notificationPanel">
-      <gel-notification :message="message" :type="type" @dismiss="handleDismiss">
-        <div class="gel-layout">
-          <div class="gel-layout__item" v-html="message">
-          </div>
-        </div>
+  <div id="notification-wrapper">
+    <transition appear name="slide-fade" v-on:after-enter="afterEnter" v-on:before-leave="beforeExit">
+      <gel-notification :class="classes" ref="notification" @dismiss="handleDismiss">
+        <slot>{{ message }}</slot>
       </gel-notification>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -39,16 +36,8 @@
       }
     },
     mounted: function () {
-      // create a empty div just above this, which will be used to hold space for the notification
-      // panel when it is fixed to the window
-      if (typeof window !== 'undefined') {
-        placeHolder = document.createElement('div');
-        placeHolder.classList.add('test');
-        this.$el.parentNode.insertBefore(placeHolder, this.$el.nextSibling);
-      }
-
       // attach listener to fix the notification panel to the top of the screen
-      inView('.test')
+      inView("#notification-wrapper")
         .on('enter', () => {
           this.$el.classList.remove('is-pinned');
         })
@@ -68,22 +57,27 @@
     },
     methods: {
       show: function (message, type) {
-        this.message = message;
+        console.log(typeof message);
+
+        if (typeof message == 'object') {
+          console.log(this.message, 'was the message');
+          this.$slots.default = this.$createElement('div', 'test');
+
+        } else {
+          this.message = message;
+        }
         this.type = type;
         this.visible = true;
       },
       afterEnter: function () {
         if (typeof window !== 'undefined') {
-          placeHolder.classList.remove('slide-fade-leave-active');
-          console.log('updating height to: ', this.$el, `${this.$el.offsetHeight}px`);
-          placeHolder.style.height = `${this.$el.offsetHeight}px`;
-          inView.offset(this.$el.offsetHeight);
-
+          console.log('updating height to: ', this.$el, `${this.$refs.notification.offsetHeight}px`);
+          this.$el.style.height = `${this.$refs.notification.offsetHeight}px`;
+          // inView.offset(this.$el.offsetHeight);
         }
       },
       beforeExit: function () {
-        placeHolder.classList.add('slide-fade-leave-active');
-        placeHolder.style.height = 0
+        this.$el.style.height = "auto";
       },
       handleDismiss: function () {
         this.visible = false;
@@ -103,10 +97,10 @@
     z-index: $gel-z-index-6--notification-panel;
     /* These two lines are so the bar has no height when in place normally, allowing
     for some kind of placeholder to be used to keep the page height correct */
-    top: auto;
-    position: absolute;
+    // top: auto;
+    // position: absolute;
 
-    &.is-pinned {
+    .is-pinned > & {
       position: fixed;
       top: 0;
     }

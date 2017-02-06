@@ -1,13 +1,14 @@
 <template>
   <gel-form-field :id="inputId" :label="label" :helpText="helpText"
                   :required="required"
-                  :errors="errors"
+                  :errors="validationErrors"
                   :helpTextDetails="helpTextDetails">
     <gel-input-autosuggest :id="inputId"
-                    :errors="errors"
+                    :errors="validationErrors"
                     :options="options"
                     :value="value"
                     @input="updateValue(arguments[0])"
+                    @blur="dirty = true"
     />
   </gel-form-field>
 </template>
@@ -15,9 +16,11 @@
 <script>
   import GelInputAutosuggest from '../atoms/InputAutosuggest.vue';
   import GelFormField from '../molecules/FormField.vue';
+  import FormFieldMixin from './mixins/FormFieldMixin.vue';
 
   export default {
     components: { GelInputAutosuggest, GelFormField },
+    mixins: [FormFieldMixin],
     props: {
       label: {
         type: String,

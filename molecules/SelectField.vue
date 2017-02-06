@@ -1,15 +1,16 @@
 <template>
   <gel-form-field :id="inputId"
                   :label="label"
-                  :errors="errors"
+                  :errors="validationErrors"
                   :helpText="helpText"
                   :helpTextDetails="helpTextDetails"
                   :required="required">
     <gel-select :id="inputId"
                 :value="value"
-                :errors="errors"
+                :errors="validationErrors"
                 :options="options"
                 v-on:input="updateValue(arguments[0])"
+                @blur="dirty = true"
     />
   </gel-form-field>
 </template>
@@ -17,9 +18,11 @@
 <script>
   import GelSelect from '../atoms/Select.vue';
   import GelFormField from '../molecules/FormField.vue';
+  import FormFieldMixin from './mixins/FormFieldMixin.vue';
 
   export default {
     components: { GelSelect, GelFormField },
+    mixins: [FormFieldMixin],
     props: {
       label: {
         type: String,

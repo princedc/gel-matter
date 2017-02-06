@@ -1,12 +1,13 @@
 <template>
   <gel-form-field :id="inputId" :label="label" :helpText="helpText"
                   :required="required"
-                  :errors="errors"
+                  :errors="validationErrors"
                   :helpTextDetails="helpTextDetails">
     <gel-input-text :id="inputId"
-                    :errors="errors"
-                    v-bind:value="value"
-                    v-on:input="updateValue(arguments[0])"
+                    :errors="validationErrors"
+                    :value="value"
+                    @input="updateValue(arguments[0])"
+                    @blur="dirty = true"
     />
   </gel-form-field>
 </template>
@@ -28,19 +29,32 @@
       id: {type: String},
       value: {type: String},
       required: Boolean,
+      validator: Function,
+      forceErrorsToShow: {
+        type: Boolean,
+        default: false,
+      },
     },
     computed: {
+      validationErrors() {
+        return (this.dirty || this.forceErrorsToShow) ? this.errors : [];
+      },
       inputId: function idGen() {
         return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
       },
       hasErrors: function () {
-        return this.errors && this.errors.length;
+        return this.validationErrors && this.validationErrors.length;
+      }
+    },
+    data() {
+      return {
+        dirty: false,
       }
     },
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
-      }
+      },
     }
   }
 </script>
@@ -49,4 +63,3 @@
   @import '../common';
 
 </style>
-

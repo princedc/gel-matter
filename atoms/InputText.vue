@@ -4,6 +4,7 @@
            v-bind:value="value"
            v-on:input="updateValue($event.target.value)"
            :class="classes"
+           @blur="$emit('blur')"
     />
 </template>
 

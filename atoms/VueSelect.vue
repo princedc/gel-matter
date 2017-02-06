@@ -190,7 +190,7 @@
         @keydown.up.prevent="typeAheadUp"
         @keydown.down.prevent="typeAheadDown"
         @keypress.enter.prevent="typeAheadSelect"
-        @blur="open = false"
+        @blur="handleBlur"
         @focus="open = true"
         type="search"
         class="form-control"
@@ -630,6 +630,11 @@
         })
 
         return exists
+      },
+
+      handleBlur() {
+        this.open = false;
+        this.$emit('blur');
       }
     },
 
