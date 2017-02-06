@@ -63,6 +63,10 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+
+    .gel-select.is-invalid & {
+      fill: $gel-color--errorRed;
+    }
   }
 
   .gel-select select {
@@ -92,6 +96,6 @@
   }
 
   .is-invalid {
-    border-color: red;
+    border-color: $gel-color--errorRed;
   }
 </style>

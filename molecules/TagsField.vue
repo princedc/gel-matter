@@ -8,6 +8,7 @@
     <input-tags :id="inputId"
               :value="value"
               :options="options"
+              :errors="errors"
               v-on:input="updateValue(arguments[0])"
     />
   </gel-form-field>
