@@ -12,16 +12,9 @@
 
   export default {
     components: { GelDismissButton },
-    beforeUpdate() {
-      if (this.message instanceof Array) {
-        this.$slots.default = this.message;
-      } else {
-        this.displayMessage = this.message;
-      }
-    },
     data() {
       return {
-        displayMessage: undefined,
+        displayMessage: this.message || undefined,
       };
     },
     props: {
@@ -63,6 +56,20 @@
 
     background: $gel-color--error;
     color: $gel-color--white;
+  }
+
+  .gel-notification__title {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  .gel-notification__error {
+    list-style: none;
+  }
+
+  .gel-notification__error-list {
+    padding-left: 0;
+    margin-top: 12px;
   }
 
   .gel-notification__dismiss {

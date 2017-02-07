@@ -12,6 +12,9 @@ export default {
     },
   },
   computed: {
+    inputId: function idGen() {
+      return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
+    },
     validationErrors() {
       return (this.dirty || this.forceErrorsToShow) ? this.errors : [];
     },

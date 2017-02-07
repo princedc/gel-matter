@@ -1,14 +1,14 @@
 <template>
   <gel-form-field :id="inputId"
                   :label="label"
-                  :errors="errors"
+                  :errors="validationErrors"
                   :helpText="helpText"
                   :helpTextDetails="helpTextDetails"
                   :required="required">
     <input-tags :id="inputId"
               :value="value"
               :options="options"
-              :errors="errors"
+              :errors="validationErrors"
               v-on:input="updateValue(arguments[0])"
     />
   </gel-form-field>
@@ -17,9 +17,11 @@
 <script>
   import InputTags from '../atoms/InputTags.vue';
   import GelFormField from '../molecules/FormField.vue';
+  import FormFieldMixin from './mixins/FormFieldMixin.vue';
 
   export default {
-    components: {InputTags, GelFormField},
+    components: { InputTags, GelFormField },
+    mixins: [FormFieldMixin],
     props: {
       label: {
         type: String,
@@ -36,20 +38,12 @@
       options: Array,
       required: Boolean,
     },
-    computed: {
-      inputId: function idGen() {
-        return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
-      },
-      hasErrors: function () {
-        return this.errors && this.errors.length;
-      }
-    },
     methods: {
-      updateValue: function (value) {
+      updateValue(value) {
         this.$emit('input', value);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

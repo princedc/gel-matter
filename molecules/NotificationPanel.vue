@@ -1,6 +1,5 @@
 <template>
-    <transition appear
-                name="slide-fade"
+    <transition name="slide"
                 v-on:enter="onEnter"
                 v-on:before-leave="onBeforeLeave"
                 v-on:leave="onLeave"
@@ -15,8 +14,7 @@
 <script type="text/ecmascript-6">
   import GelNotification from '../atoms/Notification.vue';
 
-  const allowedTypes = ["error"];
-  const allowedDirections = ["top"];
+  const allowedTypes = ['error'];
 
   export default {
     components: { GelNotification },
@@ -24,7 +22,7 @@
       direction: {
         type: String,
         validation(value) {
-          return allowedDirections.indexOf(value) !== -1;
+          return allowedTypes.includes(value);
         },
       },
     },
@@ -34,16 +32,6 @@
         type: 'error',
         visible: false,
       };
-    },
-    mounted() {
-      // attach listener to fix the notification panel to the top of the screen
-      inView('#notification-wrapper')
-        .on('enter', () => {
-          this.$el.classList.remove('is-pinned');
-        })
-        .on('exit', () => {
-          this.$el.classList.add('is-pinned');
-        });
     },
     computed: {
       classes() {
@@ -55,15 +43,8 @@
       },
     },
     methods: {
-      show: function (message, type) {
-        console.log(typeof message);
-
-        if (typeof message == 'object') {
-          console.log(this.message, 'was the message');
-          this.$slots.default = this.$createElement('div', 'test');
-        } else {
-          this.message = message;
-        }
+      show(message, type) {
+        this.message = message;
         this.type = type;
         this.visible = true;
       },
@@ -71,10 +52,8 @@
         this.visible = true;
       },
       onEnter(el) {
-        if (typeof window !== 'undefined') {
-          // height: auto cannot be transitioned with css, so explicitly set the height for transition
-          el.style.height = `${el.scrollHeight}px`;
-        }
+        // height: auto cannot be transitioned with css, so explicitly set the height for transition
+        el.style.height = `${el.scrollHeight}px`;
       },
       afterEnter(el) {
         // now that animation has finished, set to auto so it picks up content changes
@@ -84,8 +63,9 @@
         el.style.height = `${el.scrollHeight}px`;
       },
       onLeave(el) {
+        // set the height back to a specific one for transition, after the above
+        //  before leave change has been applied
         this.$nextTick(() => {
-          // set the height back to a specific one for transition
           el.style.height = 0;
         });
       },
@@ -103,31 +83,19 @@
     overflow: hidden;
     width: 100%;
     background: transparent;
+
+    &.slide-enter-active {
+      transition: all 300ms $accelerationCurve;
+    }
+
+    &.slide-leave-active {
+      transition: all .3s $decelerationCurve;
+    }
+
+    &.slide-enter, &.slide-leave-to {
+      height: 0;
+    }
   }
 
-  .gel-notification__title {
-    margin-top: 0;
-    margin-bottom: 12px;
-  }
 
-  .gel-notification__error {
-    list-style: none;
-  }
-
-  .gel-notification__error-list {
-    padding-left: 0;
-    margin-top: 12px;
-  }
-
-  .slide-fade-enter-active {
-    transition: all 300ms $accelerationCurve;
-  }
-
-  .slide-fade-leave-active {
-    transition: all .3s $decelerationCurve;
-  }
-
-  .slide-fade-enter, .slide-fade-leave-to {
-    height: 0;
-  }
 </style>

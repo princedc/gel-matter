@@ -39,14 +39,6 @@
       required: Boolean,
       schema: Object,
     },
-    computed: {
-      inputId: function idGen() {
-        return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
-      },
-      hasErrors() {
-        return this.errors && this.errors.length;
-      },
-    },
     methods: {
       updateValue(value) {
         this.$emit('input', value);

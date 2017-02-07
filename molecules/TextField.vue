@@ -15,48 +15,30 @@
 <script>
   import GelInputText from '../atoms/InputText.vue';
   import GelFormField from '../molecules/FormField.vue';
+  import FormFieldMixin from './mixins/FormFieldMixin.vue';
 
   export default {
     components: { GelInputText, GelFormField },
+    mixins: [FormFieldMixin],
     props: {
       label: {
         type: String,
         default: '',
       },
-      helpText: {type: String},
-      helpTextDetails: {type: String},
-      errors: {type: Array},
-      id: {type: String},
-      value: {type: String},
+      helpText: String,
+      helpTextDetails: String,
+      errors: Array,
+      id: String,
+      value: String,
       required: Boolean,
       validator: Function,
-      forceErrorsToShow: {
-        type: Boolean,
-        default: false,
-      },
-    },
-    computed: {
-      validationErrors() {
-        return (this.dirty || this.forceErrorsToShow) ? this.errors : [];
-      },
-      inputId: function idGen() {
-        return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
-      },
-      hasErrors: function () {
-        return this.validationErrors && this.validationErrors.length;
-      }
-    },
-    data() {
-      return {
-        dirty: false,
-      }
     },
     methods: {
-      updateValue: function (value) {
+      updateValue(value) {
         this.$emit('input', value);
       },
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

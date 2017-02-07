@@ -39,20 +39,12 @@
       options: Array,
       required: Boolean,
     },
-    computed: {
-      inputId: function idGen() {
-        return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
-      },
-      hasErrors: function() {
-        return this.errors && this.errors.length;
-      }
-    },
     methods: {
-      updateValue: function(value) {
+      updateValue(value) {
         this.$emit('input', value);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
