@@ -16,23 +16,23 @@
       id: String,
       errors: {
         type: Array,
-        default: function() { return []; },
-      }
+        default() { return []; },
+      },
     },
     computed: {
-      classes: function () {
+      classes() {
         return {
           'gel-input': true,
           'is-invalid': this.errors.length > 0,
-        }
-      }
+        };
+      },
     },
     methods: {
-      updateValue: function(value) {
+      updateValue(value) {
         this.$emit('input', value);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

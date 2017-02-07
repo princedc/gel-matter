@@ -18,6 +18,13 @@
 <script>
   import GelBreakoutBox from '../atoms/BreakoutBox.vue';
 
+  let blah = [];
+  blah.push(
+    1,
+    2,
+    3
+  );
+
   export default {
     components: { GelBreakoutBox },
     props: ["label", "helpText", "errors", "id", "required"],
@@ -27,7 +34,7 @@
       },
       requiredIndicator: function() {
         return this.required ? '*' : '';
-      }
+      },
     },
   }
 </script>
@@ -63,4 +70,3 @@
   }
 
 </style>
-

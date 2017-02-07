@@ -26,10 +26,10 @@
         type: String,
         default: '',
       },
-      helpText: {type: String},
-      helpTextDetails: {type: String},
-      errors: {type: Array},
-      id: {type: String},
+      helpText: { type: String },
+      helpTextDetails: { type: String },
+      errors: { type: Array },
+      id: { type: String },
       value: String,
       required: Boolean,
       options: Array,
@@ -38,16 +38,16 @@
       inputId: function idGen() {
         return this.id || this.label.toLowerCase().replace(/[^\w]/, '');
       },
-      hasErrors: function () {
+      hasErrors() {
         return this.errors && this.errors.length;
-      }
+      },
     },
     methods: {
-      updateValue: function (value) {
+      updateValue(value) {
         this.$emit('input', value);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

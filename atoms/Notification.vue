@@ -59,7 +59,8 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    padding: 16px 32px 16px 16px;
+    // padding: 16px 32px 16px 16px;
+    padding: 0;
 
     background: darkred;
     color: #ffffff;
