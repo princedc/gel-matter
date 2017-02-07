@@ -1,10 +1,11 @@
 <template>
-  <div style="position: relative;" class="gel-autosuggest" :class="errors ? 'is-invalid' : ''">
+  <div style="position: relative;" class="gel-autosuggest" :class="(errors && errors.length) > 0 ? 'is-invalid' : ''">
     <v-select :id="id"
               :value="value"
               :options="options"
               v-on:input="updateValue(arguments[0])"
               taggable
+              @blur="$emit('blur')"
     />
   </div>
 </template>
@@ -43,7 +44,7 @@
     border: 1px solid $gel-color--black;
 
     &.is-invalid {
-      border-color: $gel-color--errorRed;
+      border-color: $gel-color--error;
     }
 
     [type="button"] {

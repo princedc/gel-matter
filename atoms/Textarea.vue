@@ -1,9 +1,11 @@
 <template>
-    <textarea v-bind:id="id"
-              v-bind:value="value"
-              v-on:input="updateValue($event.target.value)"
+    <textarea :id="id"
+              :value="value"
               :class="classes"
               rows="3"
+              @input="updateValue($event.target.value)"
+              @blur="$emit('blur')"
+
     ></textarea>
 </template>
 
@@ -14,23 +16,23 @@
       id: String,
       errors: {
         type: Array,
-        default: function() {return [];}
-      }
+        default() { return []; },
+      },
     },
     computed: {
-      classes: function() {
+      classes() {
         return {
           'gel-textarea': true,
           'is-invalid': this.errors.length > 0,
-        }
-      }
+        };
+      },
     },
     methods: {
-      updateValue: function(value) {
+      updateValue(value) {
         this.$emit('input', value);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
@@ -44,7 +46,7 @@
     @include gel-typography('pica');
 
     .is-invalid & {
-      border: solid 1px $gel-color--errorRed;
+      border: solid 1px $gel-color--error;
     }
   }
 </style>

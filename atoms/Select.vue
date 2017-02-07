@@ -5,7 +5,7 @@
           :value="value"
           @change="updateValue($event.target.value)"
           @focus="selectIsFocused = true"
-          @blur="selectIsFocused = false"
+          @blur="handleBlur"
   >
     <option v-for="option in options" :value="option.value">{{ option.label }}</option>
   </select>
@@ -41,6 +41,10 @@
     methods: {
       updateValue: function(value) {
         this.$emit('input', value);
+      },
+      handleBlur: function(value) {
+        this.selectIsFocused = false;
+        this.$emit('blur');
       }
     }
   }
@@ -65,7 +69,7 @@
     transform: translateY(-50%);
 
     .gel-select.is-invalid & {
-      fill: $gel-color--errorRed;
+      fill: $gel-color--error;
     }
   }
 
@@ -96,6 +100,6 @@
   }
 
   .is-invalid {
-    border-color: $gel-color--errorRed;
+    border-color: $gel-color--error;
   }
 </style>

@@ -27,7 +27,7 @@
       },
       requiredIndicator: function() {
         return this.required ? '*' : '';
-      }
+      },
     },
   }
 </script>
@@ -41,7 +41,7 @@
     .gel-input-label {
       @include gel-typography('pica-bold');
       &.is-invalid {
-        color: $gel-color--errorRed;
+        color: $gel-color--error;
       }
 
       margin-bottom: 8px;
@@ -58,9 +58,8 @@
   }
 
   .gel-form-field__errors {
-    color: $gel-color--errorRed;
+    color: $gel-color--error;
     @include gel-typography('pica');
   }
 
 </style>
-
