@@ -18,5 +18,12 @@
     "normalize.css": "^5.0.0",
     "sass-mq": "^3.3.1",
     "vue-select": "sagalbot/vue-select#vue2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-html": "^2.0.0",
+    "eslint-plugin-import": "^2.2.0"
   }
 }

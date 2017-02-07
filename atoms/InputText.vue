@@ -46,7 +46,7 @@
     @include gel-typography('pica');
 
     .is-invalid & {
-      border: solid 1px $gel-color--errorRed;
+      border: solid 1px $gel-color--error;
     }
   }
 </style>

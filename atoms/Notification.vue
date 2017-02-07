@@ -8,13 +8,12 @@
 <script>
   import GelDismissButton from './DismissButton.vue';
 
-  const allowedTypes = ["error"];
+  const allowedTypes = ['error'];
 
   export default {
-    components: {GelDismissButton},
+    components: { GelDismissButton },
     beforeUpdate() {
-      if (typeof this.message == 'Array') {
-        console.log(this.message, 'is array');
+      if (this.message instanceof Array) {
         this.$slots.default = this.message;
       } else {
         this.displayMessage = this.message;
@@ -28,28 +27,28 @@
     props: {
       type: {
         type: String,
-        validation: function(value) {
+        validation(value) {
           return allowedTypes.indexOf(value) !== -1;
         },
       },
       message: {
         type: String,
-      }
+      },
     },
     computed: {
-      classes: function() {
+      classes() {
         return [
-          "gel-notification",
-          "gel-notification--" + "type",
-        ]
+          'gel-notification',
+          `gel-notification--${this.type}`,
+        ];
       },
     },
     methods: {
-      handleDismiss: function () {
+      handleDismiss() {
         this.$emit('dismiss');
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
@@ -62,12 +61,12 @@
     // padding: 16px 32px 16px 16px;
     padding: 0;
 
-    background: darkred;
-    color: #ffffff;
+    background: $gel-color--error;
+    color: $gel-color--white;
   }
 
   .gel-notification__dismiss {
-    fill: #fff;
+    fill: $gel-color--white;
     position: absolute;
     right: 16px;
     top: 16px;

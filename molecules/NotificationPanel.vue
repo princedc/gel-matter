@@ -1,5 +1,4 @@
 <template>
-  <div id="notification-wrapper" class="gel-notification-panel__wrapper">
     <transition appear
                 name="slide-fade"
                 v-on:enter="onEnter"
@@ -11,12 +10,9 @@
         <slot>{{ message }}</slot>
       </gel-notification>
     </transition>
-  </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import inView from 'in-view';
-
   import GelNotification from '../atoms/Notification.vue';
 
   const allowedTypes = ["error"];
@@ -78,27 +74,20 @@
         if (typeof window !== 'undefined') {
           // height: auto cannot be transitioned with css, so explicitly set the height for transition
           el.style.height = `${el.scrollHeight}px`;
-          // also set the height of the parent div for when the panel is pinned
-          el.parentNode.style.height = `${el.scrollHeight}px`;
-          inView.offset(this.$el.offsetHeight);
         }
       },
       afterEnter(el) {
         // now that animation has finished, set to auto so it picks up content changes
-        // el.style.height = 'auto';
+        el.style.height = 'auto';
       },
       onBeforeLeave(el) {
-        console.log('setting el height');
         el.style.height = `${el.scrollHeight}px`;
-        console.log(el.style.height);
       },
       onLeave(el) {
-        // set the height back to a specific one for transition
-        console.log('setting to 0');
-        console.log(el.style.height);
-        el.style.height = 0;
-        console.log(el.style.height);
-        el.parentNode.style.height = 0;
+        this.$nextTick(() => {
+          // set the height back to a specific one for transition
+          el.style.height = 0;
+        });
       },
       handleDismiss() {
         this.visible = false;
@@ -114,13 +103,6 @@
     overflow: hidden;
     width: 100%;
     background: transparent;
-    // max-height: 100px;
-    z-index: $gel-z-index-6--notification-panel;
-
-    .is-pinned > & {
-      position: fixed;
-      top: 0;
-    }
   }
 
   .gel-notification__title {
@@ -141,7 +123,7 @@
     transition: all 300ms $accelerationCurve;
   }
 
-  .slide-fade-leave-active, .gel-notification-panel__wrapper {
+  .slide-fade-leave-active {
     transition: all .3s $decelerationCurve;
   }
 

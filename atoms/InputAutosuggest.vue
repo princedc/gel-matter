@@ -44,7 +44,7 @@
     border: 1px solid $gel-color--black;
 
     &.is-invalid {
-      border-color: $gel-color--errorRed;
+      border-color: $gel-color--error;
     }
 
     [type="button"] {

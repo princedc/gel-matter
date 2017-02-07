@@ -18,13 +18,6 @@
 <script>
   import GelBreakoutBox from '../atoms/BreakoutBox.vue';
 
-  let blah = [];
-  blah.push(
-    1,
-    2,
-    3
-  );
-
   export default {
     components: { GelBreakoutBox },
     props: ["label", "helpText", "errors", "id", "required"],
@@ -48,7 +41,7 @@
     .gel-input-label {
       @include gel-typography('pica-bold');
       &.is-invalid {
-        color: $gel-color--errorRed;
+        color: $gel-color--error;
       }
 
       margin-bottom: 8px;
@@ -65,7 +58,7 @@
   }
 
   .gel-form-field__errors {
-    color: $gel-color--errorRed;
+    color: $gel-color--error;
     @include gel-typography('pica');
   }
 
