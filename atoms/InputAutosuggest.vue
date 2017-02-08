@@ -90,25 +90,24 @@
       border: solid 1px $gel-color--black;
       list-style: none;
       margin-left: 0;
-      padding: 12px 0;
+      padding: 0;
       width: calc(100% + 2px);
       z-index: $gel-z-index-6--dropdown;
 
       li a, li a:visited {
         @include gel-typography('pica');
         background: $gel-color--white;
-        padding: 3px 12px;
+        padding: 12px;
         display: block;
         color: $gel-color--tundora;
       }
 
       li.highlight a, li.highlight.active a {
-        background: $gel-color--alto;
+        background: $gel-color--menu-hover;
       }
 
       li.active a {
-        background: $gel-color--cod-gray;
-        color: $gel-color--white;
+        background: $gel-color--menu-selected;
       }
     }
   }

@@ -1,5 +1,7 @@
 <template>
-  <gel-form-field :id="inputId" :label="label" :helpText="helpText"
+  <gel-form-field :id="inputId"
+                  :label="label"
+                  :helpText="helpText"
                   :required="required"
                   :errors="validationErrors"
                   :helpTextDetails="helpTextDetails">

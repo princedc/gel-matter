@@ -47,6 +47,7 @@
 
     .is-invalid & {
       border: solid 1px $gel-color--error;
+      outline-color: $gel-color--error;
     }
   }
 </style>

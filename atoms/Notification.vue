@@ -52,7 +52,7 @@
     overflow: hidden;
     position: relative;
     // padding: 16px 32px 16px 16px;
-    padding: 0;
+    padding: 12px 0;
 
     background: $gel-color--error;
     color: $gel-color--white;
@@ -60,22 +60,25 @@
 
   .gel-notification__title {
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
+    @include gel-typography('pica');
+    font-weight: normal;
   }
 
   .gel-notification__error {
     list-style: none;
+    @include gel-typography('long-primer-bold');
   }
 
   .gel-notification__error-list {
     padding-left: 0;
-    margin-top: 12px;
+    margin: 0;
   }
 
   .gel-notification__dismiss {
     fill: $gel-color--white;
     position: absolute;
-    right: 16px;
-    top: 16px;
+    right: 0;
+    top: 12px;
   }
 </style>

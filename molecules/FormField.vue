@@ -1,11 +1,11 @@
 <template>
   <div v-bind:class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
     <div class="gel-layout">
-      <div class="gel-layout__item gel-6/12@m gel-5/12@xxl">
+      <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
         <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">{{ label }}{{ requiredIndicator }}</label>
         <slot />
         <div class="gel-form-field__errors">
-          <p v-for="error in errors">{{ error }}</p>
+          <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
         </div>
       </div>
       <div class="gel-layout__item gel-5/12@m gel-4/12@xxl">
@@ -57,9 +57,21 @@
     }
   }
 
+  .gel-form-field__control {
+    position: relative;
+    padding-bottom: 1.75em;
+
+  }
+
   .gel-form-field__errors {
     color: $gel-color--error;
-    @include gel-typography('pica');
+    @include gel-typography('long-primer');
+    position: absolute;
+    bottom: 0;
+  }
+
+  .gel-form-field__error {
+    margin: 0;
   }
 
 </style>

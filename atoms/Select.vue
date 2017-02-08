@@ -97,9 +97,14 @@
 
   .gel-select.is-focused {
     @include form-field-outline;
+
+    &.is-invalid {
+      outline-color: $gel-color--error;
+    }
   }
 
   .is-invalid {
     border-color: $gel-color--error;
+    outline-color: $gel-color--error;
   }
 </style>

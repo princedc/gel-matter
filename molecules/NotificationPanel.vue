@@ -1,14 +1,20 @@
 <template>
+
     <transition name="slide"
                 v-on:enter="onEnter"
                 v-on:before-leave="onBeforeLeave"
                 v-on:leave="onLeave"
                 v-on:after-enter="afterEnter"
     >
-      <gel-notification :class="classes" ref="notification"  @dismiss="handleDismiss" v-if="visible">
+    <div class="gel-wrap" :class="classes">
+    <div class="gel-layout">
+      <div class="gel-layout__item">
+      <gel-notification :type="type" ref="notification"  @dismiss="handleDismiss" v-if="visible">
         <slot>{{ message }}</slot>
       </gel-notification>
+      </div></div></div>
     </transition>
+
 </template>
 
 <script type="text/ecmascript-6">
@@ -38,7 +44,6 @@
         return [
           'gel-notification-panel',
           `gel-notification-panel--${this.type}`,
-          'js-notification-panel',
         ];
       },
     },
@@ -95,6 +100,10 @@
     &.slide-enter, &.slide-leave-to {
       height: 0;
     }
+  }
+
+  .gel-notification-panel--error {
+    background-color: $gel-color--error;
   }
 
 
