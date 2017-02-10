@@ -5,6 +5,8 @@
               :options="options"
               v-on:input="updateValue(arguments[0])"
               taggable
+              pushTags
+              ignoreCase
               @blur="$emit('blur')"
     />
   </div>
@@ -108,6 +110,10 @@
 
       li.active a {
         background: $gel-color--menu-selected;
+      }
+
+      li.new a {
+        font-weight: bold;
       }
     }
   }

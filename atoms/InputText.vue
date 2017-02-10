@@ -1,6 +1,6 @@
 <template>
     <input :id="id"
-           type="text"
+           :type="type"
            v-bind:value="value"
            v-on:input="updateValue($event.target.value)"
            :class="classes"
@@ -11,7 +11,13 @@
 <script>
   export default {
     props: {
-      type: String,
+      type: {
+        type: String,
+        default: 'text',
+        validation(value) {
+          return ['text', 'url', 'email'].includes(value);
+        },
+      },
       value: String,
       id: String,
       errors: {

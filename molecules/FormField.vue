@@ -1,16 +1,14 @@
 <template>
-  <div v-bind:class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
-    <div class="gel-layout">
-      <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
-        <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">{{ label }}{{ requiredIndicator }}</label>
-        <slot />
-        <div class="gel-form-field__errors">
-          <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
-        </div>
+  <div class="gel-layout" :class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
+    <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
+      <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">{{ label }}{{ requiredIndicator }}</label>
+      <slot />
+      <div class="gel-form-field__errors">
+        <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
       </div>
-      <div class="gel-layout__item gel-5/12@m gel-4/12@xxl">
-        <gel-breakout-box class="gel-breakout-box" :helpText="helpText"/>
-      </div>
+    </div>
+    <div class="gel-layout__item gel-5/12@m gel-4/12@xxl">
+      <gel-breakout-box class="gel-breakout-box" :helpText="helpText"/>
     </div>
   </div>
 </template>
@@ -37,6 +35,7 @@
 
   .gel-form-field {
     margin-bottom: 18px;
+    align-items: flex-start;
 
     .gel-input-label {
       @include gel-typography('pica-bold');
@@ -60,7 +59,6 @@
   .gel-form-field__control {
     position: relative;
     padding-bottom: 1.75em;
-
   }
 
   .gel-form-field__errors {

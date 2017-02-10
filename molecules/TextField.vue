@@ -6,6 +6,7 @@
     <gel-input-text :id="inputId"
                     :errors="validationErrors"
                     :value="value"
+                    :type="type"
                     @input="updateValue(arguments[0])"
                     @blur="dirty = true"
     />
@@ -25,6 +26,7 @@
         type: String,
         default: '',
       },
+      type: String,
       helpText: String,
       helpTextDetails: String,
       errors: Array,

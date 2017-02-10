@@ -5,7 +5,9 @@
               :value="value"
               :options="options"
               v-on:input="updateValue(arguments[0])"
+              pushTags
               taggable
+              ignoreCase
     />
   </div>
 </template>

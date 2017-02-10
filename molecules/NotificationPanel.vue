@@ -1,19 +1,22 @@
 <template>
-
-    <transition name="slide"
-                v-on:enter="onEnter"
-                v-on:before-leave="onBeforeLeave"
-                v-on:leave="onLeave"
-                v-on:after-enter="afterEnter"
-    >
-    <div class="gel-wrap" :class="classes">
-    <div class="gel-layout">
-      <div class="gel-layout__item">
-      <gel-notification :type="type" ref="notification"  @dismiss="handleDismiss" v-if="visible">
-        <slot>{{ message }}</slot>
-      </gel-notification>
-      </div></div></div>
-    </transition>
+  <transition appear name="slide"
+              v-on:enter="onEnter"
+              v-on:after-enter="afterEnter"
+              v-on:before-leave="onBeforeLeave"
+              v-on:leave="onLeave"
+  >
+    <div :class="classes" v-if="visible">
+      <div class="gel-wrap">
+        <div class="gel-layout">
+          <div class="gel-layout__item">
+            <gel-notification :type="type" @dismiss="handleDismiss">
+              <slot>{{ message }}</slot>
+            </gel-notification>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
 
 </template>
 
@@ -52,8 +55,12 @@
         this.message = message;
         this.type = type;
         this.visible = true;
+        this.$emit('shown');
       },
       forceShow() {
+        if (this.visible === true) {
+          this.$emit('shown');
+        }
         this.visible = true;
       },
       onEnter(el) {
@@ -63,16 +70,17 @@
       afterEnter(el) {
         // now that animation has finished, set to auto so it picks up content changes
         el.style.height = 'auto';
+        this.$emit('shown');
       },
       onBeforeLeave(el) {
         el.style.height = `${el.scrollHeight}px`;
       },
       onLeave(el) {
-        // set the height back to a specific one for transition, after the above
-        //  before leave change has been applied
-        this.$nextTick(() => {
+        // set the height back to a specific one for transition, after the before-
+        // -leave change has been applied. Next tick doesn't work for some reason.
+        setTimeout(() => {
           el.style.height = 0;
-        });
+        }, 0);
       },
       handleDismiss() {
         this.visible = false;
@@ -94,7 +102,7 @@
     }
 
     &.slide-leave-active {
-      transition: all .3s $decelerationCurve;
+      transition: all 300ms $decelerationCurve;
     }
 
     &.slide-enter, &.slide-leave-to {

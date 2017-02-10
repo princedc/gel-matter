@@ -209,10 +209,10 @@
     <ul ref="dropdownMenu" v-if="dropdownOpen" :transition="transition" class="dropdown-menu"
         :style="{ 'max-height': maxHeight }">
       <li v-for="(option, index) in filteredOptions" v-bind:key="index"
-          :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }"
+          :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer, new: !optionExists(option) }"
           @mouseover="typeAheadPointer = index">
         <a @mousedown.prevent="select(option)">
-          {{ getOptionLabel(option) }}
+          {{ optionExists(option) ? getOptionLabel(option) : newOptionTemplate(getOptionLabel(option))  }}
         </a>
       </li>
       <transition name="fade">
@@ -336,14 +336,21 @@
        */
       getOptionLabel: {
         type: Function,
-        default(option) {
-          if (typeof option === 'object') {
-            if (this.label && option[this.label]) {
-              return option[this.label]
+        default(passedOption) {
+          // hack because default functions don't work on SSR
+          const func = function func(option) {
+            if (typeof option === 'object') {
+              if (this.label && option[this.label]) {
+                return option[this.label];
+              }
             }
+            return option;
+          };
+          if (typeof window === 'undefined') {
+            return func;
           }
-          return option;
-        }
+          return func(passedOption);
+        },
       },
 
       /**
@@ -355,9 +362,9 @@
        */
       onChange: {
         type: Function,
-        default: function (val) {
-          this.$emit('input', val)
-        }
+        default(val) {
+          this.$emit('input', val);
+        },
       },
 
       /**
@@ -405,7 +412,22 @@
       noDrop: {
         type: Boolean,
         default: false
-      }
+      },
+
+      newOptionTemplate: {
+        type: Function,
+        default(newOption) {
+          if (typeof window === 'undefined') {
+            return option => `Add "${option}"`;
+          }
+          return `Add "${newOption}"`;
+        },
+      },
+
+      ignoreCase: {
+        type: Boolean,
+        default: false,
+      },
     },
 
     data() {
@@ -450,7 +472,7 @@
        * @return {void}
        */
       options(val) {
-        this.mutableOptions = val
+        this.mutableOptions = val.slice(0).sort(this.optionsSorter);
       },
 
       /**
@@ -496,7 +518,9 @@
             option = this.createOption(option)
 
             if (this.pushTags) {
-              this.mutableOptions.push(option)
+              const temp = this.mutableOptions.slice(0);
+              temp.push(option);
+              this.mutableOptions = temp.sort(this.optionsSorter);
             }
           }
 
@@ -619,23 +643,32 @@
        * @return {boolean}
        */
       optionExists(option) {
-        let exists = false
+        let exists = false;
 
-        this.mutableOptions.forEach(opt => {
-          if (typeof opt === 'object' && opt[this.label] === option) {
-            exists = true
-          } else if (opt === option) {
-            exists = true
+        this.mutableOptions.forEach((opt) => {
+          let optionLabel = typeof opt === 'object' ? opt[this.label].toLowerCase() : opt.toLowerCase();
+          let search = option;
+          if (this.ignoreCase) {
+            search = option.toLowerCase();
+            optionLabel = opt.toLowerCase();
           }
-        })
+          if (search === optionLabel) {
+            exists = true;
+          }
+        });
 
-        return exists
+        return exists;
       },
 
       handleBlur() {
+        this.search = '';
         this.open = false;
         this.$emit('blur');
-      }
+      },
+
+      optionsSorter(a, b) {
+        return this.getOptionLabel(a).localeCompare(this.getOptionLabel(b))
+      },
     },
 
     computed: {
@@ -688,7 +721,7 @@
           return option.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         })
         if (this.taggable && this.search.length && !this.optionExists(this.search)) {
-          options.unshift(this.search)
+          options.unshift(this.search);
         }
         return options
       },
