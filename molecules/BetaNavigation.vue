@@ -30,7 +30,7 @@
   @import '../common';
 
   .gel-beta-nav {
-    background-color: #ffdc48;
+    background-color: $gel-color--beta-background;
     color: #404040;
     padding: 16px 0;
   }
