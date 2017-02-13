@@ -3,13 +3,11 @@
     <div class="gel-wrap">
       <div class="gel-layout">
         <div class="gel-layout__item gel-2/3">
-          <p class="gel-beta-nav__intro">You are looking at our new site.</p>
-          <p class="gel-beta-nav__detail">Take a look at our <a href="">Foundations</a> and
-            example <a href="">Design Patterns</a>.</p>
+          <slot>
         </div>
         <div class="gel-guideline-beta-cta gel-layout__item gel-1/3">
-          <gel-link-button href="/gel-styleguide">
-            <gel-icon set="core" icon="previous" size="small" /> Go Back to the old site
+          <gel-link-button href="http://www.bbc.co.uk/gel">
+            <gel-icon class="gel-icon--inline" set="core" icon="previous" size="small" /> Go the the GEL site
           </gel-link-button>
         </div>
       </div>
@@ -46,6 +44,7 @@
 
     a {
       color: #404040;
+      font-weight: bold;
     }
     a:hover {
       color: #121212;
