@@ -5,7 +5,7 @@
               v-on:before-leave="onBeforeLeave"
               v-on:leave="onLeave"
   >
-    <div :class="classes" v-if="visible">
+    <div :class="classes" v-if="isVisible">
       <div class="gel-wrap">
         <div class="gel-layout">
           <div class="gel-layout__item">
@@ -23,23 +23,24 @@
 <script type="text/ecmascript-6">
   import GelNotification from '../atoms/Notification.vue';
 
-  const allowedTypes = ['error'];
+  const allowedTypes = ['error', 'success'];
 
   export default {
     components: { GelNotification },
     props: {
-      direction: {
+      type: {
         type: String,
+        default: 'error',
         validation(value) {
           return allowedTypes.includes(value);
         },
       },
+      visible: Boolean,
     },
     data() {
       return {
         message: null,
-        type: 'error',
-        visible: false,
+        isVisible: this.visible,
       };
     },
     computed: {
@@ -54,14 +55,14 @@
       show(message, type) {
         this.message = message;
         this.type = type;
-        this.visible = true;
+        this.isVisible = true;
         this.$emit('shown');
       },
       forceShow() {
-        if (this.visible === true) {
+        if (this.isVisible === true) {
           this.$emit('shown');
         }
-        this.visible = true;
+        this.isVisible = true;
       },
       onEnter(el) {
         // height: auto cannot be transitioned with css, so explicitly set the height for transition
@@ -83,7 +84,7 @@
         }, 0);
       },
       handleDismiss() {
-        this.visible = false;
+        this.isVisible = false;
       },
     },
   };
@@ -114,5 +115,7 @@
     background-color: $gel-color--error;
   }
 
-
+  .gel-notification-panel--success {
+    background-color: $gel-color--success;
+  }
 </style>

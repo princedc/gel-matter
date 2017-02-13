@@ -5,36 +5,36 @@
 </template>
 
 <script>
-  const allowedTypes = ['primary', 'secondary', 'publish'];
+  const allowedTypes = ['primary', 'secondary', 'publish', 'transparent'];
 
   export default {
     props: {
       type: {
         type: String,
         default: 'primary',
-        validation: function(value) {
+        validation(value) {
           return allowedTypes.indexOf(value);
-        }
-      }
+        },
+      },
     },
-    data: function() {
-      return { something: 'value' }
+    data() {
+      return { something: 'value' };
     },
     computed: {
-      classes: function() {
+      classes() {
         return [
           'gel-button',
-          'gel-button--' + this.type
-        ]
-      }
+          `gel-button--${this.type}`,
+        ];
+      },
     },
     methods: {
-      handleClick: function(e) {
+      handleClick(e) {
         e.preventDefault();
         this.$emit('click', e);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

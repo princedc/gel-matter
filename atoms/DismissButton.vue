@@ -1,21 +1,22 @@
 <template>
-  <button class="gel-button gel-button--transparent" @click="handleClick">
+  <gel-button class="gel-button" type="transparent" @click="handleClick">
     <gel-icon set="core" icon="no" size="small" />
-  </button>
+  </gel-button>
 </template>
 
 <script>
+  import GelButton from './Button.vue';
   import GelIcon from './Icon.vue';
 
   export default {
-    components: {GelIcon},
+    components: { GelIcon, GelButton },
     methods: {
-      handleClick: function(e) {
+      handleClick(e) {
         e.preventDefault();
-        this.$emit('click')
-      }
-    }
-  }
+        this.$emit('click');
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

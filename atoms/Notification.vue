@@ -1,14 +1,14 @@
 <template>
   <div :class="classes">
     <slot>{{ displayMessage }}</slot>
-    <gel-dismiss-button class="gel-notification__dismiss" @click="handleDismiss"></gel-dismiss-button>
+    <gel-dismiss-button class="gel-notification__dismiss" @click="handleDismiss" v-if="dismissible"></gel-dismiss-button>
   </div>
 </template>
 
 <script>
   import GelDismissButton from './DismissButton.vue';
 
-  const allowedTypes = ['error'];
+  const allowedTypes = ['error', 'success'];
 
   export default {
     components: { GelDismissButton },
@@ -23,6 +23,10 @@
         validation(value) {
           return allowedTypes.indexOf(value) !== -1;
         },
+      },
+      dismissible: {
+        type: Boolean,
+        default: true,
       },
       message: {
         type: String,
@@ -56,6 +60,26 @@
 
     background: $gel-color--error;
     color: $gel-color--white;
+    display: flex;
+
+  }
+
+  .gel-notification--success {
+    background-color: $gel-color--success;
+  }
+
+  .gel-notification__message {
+    margin: 0;
+    padding: 0;
+    @include gel-typography('pica');
+  }
+
+  .gel-notification__icon {
+    margin-right: 12px;
+    display: inline-block;
+    fill: #fff;
+    vertical-align: -0.35em;
+    @include gel-typography('pica');
   }
 
   .gel-notification__title {
@@ -79,6 +103,6 @@
     fill: $gel-color--white;
     position: absolute;
     right: 0;
-    top: 12px;
+    top: 1em;
   }
 </style>
