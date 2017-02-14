@@ -31,12 +31,14 @@
       message: {
         type: String,
       },
+      light: Boolean,
     },
     computed: {
       classes() {
+        const light = this.light ? '-light' : '';
         return [
           'gel-notification',
-          `gel-notification--${this.type}`,
+          `gel-notification--${this.type}${light}`,
         ];
       },
     },
@@ -62,6 +64,11 @@
     color: $gel-color--white;
     display: flex;
 
+  }
+
+  .gel-notification--error-light {
+    background: transparent;
+    color: $gel-color--error;
   }
 
   .gel-notification--success {
@@ -92,6 +99,7 @@
   .gel-notification__error {
     list-style: none;
     @include gel-typography('long-primer-bold');
+    margin-bottom: 4px;
   }
 
   .gel-notification__error-list {

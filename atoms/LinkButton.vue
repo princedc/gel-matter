@@ -1,5 +1,10 @@
 <template>
   <a class="gel-button gel-button-secondary gel-long-primer-bold" :href="href">
+    <span class="gel-button__icon" v-if="icon || $slots.icon">
+      <slot name="icon">
+        <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small" />
+      </slot>
+    </span>
     <slot/>
   </a>
 </template>
@@ -13,20 +18,27 @@
       type: {
         type: String,
         default: 'primary',
-        validation: function(value) {
+        validation(value) {
           return allowedTypes.indexOf(value);
-        }
-      }
+        },
+      },
+      icon: {
+        type: Object,
+        default: false,
+        validation(value) {
+          return ('set' in value && 'icon' in value);
+        },
+      },
     },
     computed: {
-      classes: function() {
+      classes() {
         return [
           'gel-button',
-          'gel-button--' + this.type
-        ]
-      }
-    }
-  }
+          `gel-button--${this.type}`,
+        ];
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

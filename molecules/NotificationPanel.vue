@@ -6,10 +6,11 @@
               v-on:leave="onLeave"
   >
     <div :class="classes" v-if="isVisible">
-      <div class="gel-wrap">
+      <div :class="fullWidth ? 'gel-wrap' : ''">
         <div class="gel-layout">
-          <div class="gel-layout__item">
-            <gel-notification :type="type" @dismiss="handleDismiss">
+          <div class="gel-layout__item gel-1/1">
+            <gel-notification :type="type" @dismiss="handleDismiss" :dismissible="dismissible"
+                :light="light">
               <slot>{{ message }}</slot>
             </gel-notification>
           </div>
@@ -36,6 +37,17 @@
         },
       },
       visible: Boolean,
+      dismissible: {
+        type: Boolean,
+        default: true,
+      },
+      light: Boolean,
+      /**
+       * Use when expecting the notification to span the full page width.
+       * When set to true, wraps the notification within a gel-wrap.
+       * @type {[type]}
+       */
+      fullWidth: Boolean,
     },
     data() {
       return {
@@ -45,9 +57,11 @@
     },
     computed: {
       classes() {
+        const light = this.light ? '-light' : '';
+
         return [
           'gel-notification-panel',
-          `gel-notification-panel--${this.type}`,
+          `gel-notification-panel--${this.type}${light}`,
         ];
       },
     },
@@ -109,6 +123,11 @@
     &.slide-enter, &.slide-leave-to {
       height: 0;
     }
+  }
+
+  .gel-notification--error-light {
+    background-color: transparent;
+    color: $gel-color--error;
   }
 
   .gel-notification-panel--error {

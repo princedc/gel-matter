@@ -7,7 +7,7 @@
         <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
       </div>
     </div>
-    <div class="gel-layout__item gel-5/12@m gel-4/12@xxl">
+    <div class="gel-layout__item gel-6/12@m gel-5/12@xxl">
       <gel-breakout-box class="gel-breakout-box" :helpText="helpText"/>
     </div>
   </div>
