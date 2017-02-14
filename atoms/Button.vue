@@ -1,5 +1,10 @@
 <template>
   <button :class="classes" v-on:click="handleClick">
+    <div class="gel-button__icon" v-if="icon || $slots.icon">
+      <slot name="icon">
+        <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small" />
+      </slot>
+    </div>
     <slot/>
   </button>
 </template>
@@ -14,6 +19,13 @@
         default: 'primary',
         validation(value) {
           return allowedTypes.indexOf(value);
+        },
+      },
+      icon: {
+        type: Object,
+        default: false,
+        validation(value) {
+          return ('set' in value && 'icon' in value);
         },
       },
     },
@@ -79,6 +91,10 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .gel-button__icon {
+    margin-right: 6px;
   }
 
   .u-full-width {

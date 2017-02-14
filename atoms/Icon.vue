@@ -1,5 +1,5 @@
 <template>
-  <svg :class="`gel-icon--${iconSize}`">
+  <svg :class="`gel-icon gel-icon--${iconSize}`">
     <use :style="{ fill: color }" :xlink:href="`${svgUrl}#gel-icon-${icon}`"></use>
   </svg>
 </template>
@@ -40,6 +40,10 @@
 </script>
 
 <style lang="scss">
+  .gel-icon {
+    fill: currentColor;
+  }
+
   .gel-icon--small {
     height: 16px;
     width: 16px;
