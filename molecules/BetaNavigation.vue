@@ -2,7 +2,7 @@
   <div class="gel-beta-nav">
     <div class="gel-wrap">
       <div class="gel-layout">
-        <div class="gel-layout__item gel-2/3">
+        <div class="gel-layout__item gel-2/3 gel-beta-nav__content">
           <slot>
         </div>
         <div class="gel-beta-nav__cta gel-layout__item gel-1/3">
@@ -33,6 +33,17 @@
     padding: 16px 0;
   }
 
+  .gel-beta-nav__content {
+    @include gel-typography('body-copy');
+    a {
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: $gel-color--black;
+    }
+  }
+
   .gel-beta-nav__intro {
     @include gel-typography('double-pica');
     margin-bottom: 8px;
@@ -52,7 +63,7 @@
    */
   a {
     color: $gel-color--text;
-    font-weight: bold;
+    transition: color 300ms;
   }
   a:hover {
     color: $gel-color--link-hover;

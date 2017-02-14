@@ -23,10 +23,9 @@
         },
       },
       icon: {
-        type: Object,
         default: false,
         validation(value) {
-          return ('set' in value && 'icon' in value);
+          return value === false || ('set' in value && 'icon' in value);
         },
       },
     },
@@ -46,15 +45,15 @@
 
   a.gel-button {
     @include gel-typography('long-primer-bold');
-    color: #404040;
-    border: solid 1px #404040;
+    color: $gel-color--text;
+    border: solid 1px $gel-color--text;
     padding: 16px;
     display: inline-block;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
-      color: #121212;
+      color: $gel-color--text;
     }
   }
 </style>

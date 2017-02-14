@@ -46,6 +46,14 @@ html {
 @import 'atoms/animations';
 @import 'atoms/colours';
 
+body {
+  color: $gel-color--text;
+}
+
+h1.gel-page-title {
+  margin-bottom: 60px;
+}
+
 @mixin form-field-outline {
   outline: 1px solid #000;
   outline: -webkit-focus-ring-color auto 5px;

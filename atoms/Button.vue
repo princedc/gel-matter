@@ -22,10 +22,9 @@
         },
       },
       icon: {
-        type: Object,
         default: false,
         validation(value) {
-          return ('set' in value && 'icon' in value);
+          return value === false || ('set' in value && 'icon' in value);
         },
       },
     },
