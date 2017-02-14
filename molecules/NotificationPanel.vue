@@ -7,15 +7,16 @@
   >
     <div :class="classes" v-if="isVisible">
       <div :class="fullWidth ? 'gel-wrap' : ''">
-      <div class="gel-layout">
-      <div class="gel-layout__item gel-1/1">
+        <div class="gel-layout">
+          <div class="gel-layout__item gel-1/1">
             <gel-notification :type="type" @dismiss="handleDismiss" :dismissible="dismissible"
                 :light="light">
               <slot>{{ message }}</slot>
             </gel-notification>
+          </div>
         </div>
       </div>
-    </div></div>
+    </div>
   </transition>
 
 </template>

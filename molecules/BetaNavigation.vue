@@ -5,9 +5,9 @@
         <div class="gel-layout__item gel-2/3">
           <slot>
         </div>
-        <div class="gel-guideline-beta-cta gel-layout__item gel-1/3">
-          <gel-link-button href="http://www.bbc.co.uk/gel">
-            <gel-icon class="gel-icon--inline" set="core" icon="previous" size="small" /> Go the the GEL site
+        <div class="gel-beta-nav__cta gel-layout__item gel-1/3">
+          <gel-link-button href="https://www.bbc.co.uk/gel" class="u-float-right">
+            Go the the GEL site
           </gel-link-button>
         </div>
       </div>
@@ -29,7 +29,7 @@
 
   .gel-beta-nav {
     background-color: $gel-color--beta-background;
-    color: #404040;
+    color: $gel-color--text;
     padding: 16px 0;
   }
 
@@ -39,16 +39,23 @@
     margin-top: 0;
   }
 
-  .gel-beta-nav__detail {
-    margin: 0;
+  .gel-beta-nav__cta {
+    text-align: right;
+  }
 
-    a {
-      color: #404040;
-      font-weight: bold;
-    }
-    a:hover {
-      color: #121212;
-    }
+  .u-float-right {
+    float: right;
+  }
+
+  /**
+   * TODO: These rules should be moved to global css
+   */
+  a {
+    color: $gel-color--text;
+    font-weight: bold;
+  }
+  a:hover {
+    color: $gel-color--link-hover;
   }
 
 

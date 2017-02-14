@@ -99,6 +99,7 @@
   .gel-notification__error {
     list-style: none;
     @include gel-typography('long-primer-bold');
+    margin-bottom: 4px;
   }
 
   .gel-notification__error-list {
