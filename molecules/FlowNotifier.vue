@@ -1,5 +1,5 @@
 <template>
-  <gel-notification-panel :type="type" ref="panel">
+  <gel-notification-panel :type="type" ref="panel" full-width>
     <gel-icon icon="yes" set="core" size="small" class="gel-notification__icon" />
     <h3 class="gel-notification__message" v-if="messageText">
       {{ messageText }}
