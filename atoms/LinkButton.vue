@@ -50,6 +50,7 @@
     padding: 16px;
     display: inline-block;
     text-decoration: none;
+    text-align: center;
 
     &:hover {
       text-decoration: underline;

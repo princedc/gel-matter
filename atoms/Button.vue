@@ -10,9 +10,12 @@
 </template>
 
 <script>
+  import GelIcon from './Icon.vue';
+
   const allowedTypes = ['primary', 'secondary', 'publish', 'transparent'];
 
   export default {
+    components: { GelIcon },
     props: {
       type: {
         type: String,
@@ -59,11 +62,12 @@
   }
 
   .gel-button--primary {
-    background: #404040;
+    background: $gel-color--text;
     color: #fff;
+    transition: background-color 200ms ease;
 
     &:hover {
-      background-color: #000;
+      background-color: $gel-color--black;
       text-decoration: underline;
     }
   }
@@ -74,16 +78,18 @@
   }
 
   .gel-button--publish {
-    background: rgba(0, 143, 17, 0.8);
+    background: lighten($gel-color--success, 10%);
     color: #fff;
 
     &:hover {
-      background: rgba(0, 143, 17, 1);
+      background: $gel-color--success;
       text-decoration: underline;
     }
   }
 
   .gel-button--secondary {
+    border: solid 1px $gel-color--text;
+    color: $gel-color--text;
     background: transparent;
     text-decoration: none;
 
@@ -94,6 +100,7 @@
 
   .gel-button__icon {
     margin-right: 6px;
+    display: inline-block;
   }
 
   .u-full-width {

@@ -48,6 +48,7 @@ html {
 
 body {
   color: $gel-color--text;
+  @include gel-typography('body-copy');
 }
 
 h1.gel-page-title {
