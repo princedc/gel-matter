@@ -2,7 +2,7 @@
   <div class="gel-layout" :class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
     <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
       <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">{{ label }}{{ requiredIndicator }}</label>
-      <slot />
+      <slot></slot>
       <div class="gel-form-field__errors">
         <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
       </div>
@@ -58,7 +58,7 @@
 
   .gel-form-field__control {
     position: relative;
-    padding-bottom: 1.75em;
+    padding-bottom: 1.25em;
   }
 
   .gel-form-field__errors {

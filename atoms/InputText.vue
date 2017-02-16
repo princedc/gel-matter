@@ -45,10 +45,10 @@
   @import '../common';
 
   .gel-input {
-    border: solid 1px $gel-color--black;
+    border: solid 1px $gel-color--input-border;
     padding: 12px;
     width: 100%;
-    background: #fff;
+    background: $gel-color--input-bg;
     @include gel-typography('pica');
 
     .is-invalid & {

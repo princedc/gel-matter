@@ -54,12 +54,12 @@
   @import '../common';
 
   .gel-select {
-    border: 1px solid #000;
+    border: 1px solid $gel-color--input-border;
     width: 100%;
     border-radius: 0;
     overflow: hidden;
     position: relative;
-    background: #fff;
+    background: $gel-color--input-bg;
   }
 
   .gel-select__icon {

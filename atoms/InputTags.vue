@@ -62,7 +62,7 @@
 
   .gel-tags.gel-tags {
     position: relative;
-    border: 1px solid $gel-color--black;
+    border: 1px solid $gel-color--input-border;
 
     [type="button"] {
       -webkit-appearance: initial;
@@ -76,8 +76,8 @@
     }
 
     .selected-tag {
-      background: $gel-color--tundora;
-      color: $gel-color--white;
+      background: $gel-color--text;
+      color: $gel-color--input-bg;
       border-radius: 0;
       border: 0;
       margin: 12px 0 0 12px;
@@ -91,7 +91,7 @@
       background: transparent;
       border: 0;
       cursor: pointer;
-      color: $gel-color--white;
+      color: $gel-color--input-bg;
       fill: currentColor;
       margin-left: 12px;
     }
@@ -104,8 +104,8 @@
       position: absolute;
       left: -1px;
       top: 100%;
-      background: $gel-color--white;
-      border: solid 1px $gel-color--black;
+      background: $gel-color--input-bg;
+      border: solid 1px $gel-color--input-border;
       list-style: none;
       margin-left: 0;
       padding: 0;
@@ -114,10 +114,10 @@
 
       li a, li a:visited {
         @include gel-typography('pica');
-        background: $gel-color--white;
+        background: $gel-color--input-bg;
         padding: 12px 12px;
         display: block;
-        color: $gel-color--tundora;
+        color: $gel-color--text;
       }
 
       li.highlight a, li.highlight.active a {

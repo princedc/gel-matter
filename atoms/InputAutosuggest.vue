@@ -43,7 +43,7 @@
 
   .gel-autosuggest.gel-autosuggest {
     position: relative;
-    border: 1px solid $gel-color--black;
+    border: 1px solid $gel-color--input-border;
 
     &.is-invalid {
       border-color: $gel-color--error;
@@ -62,7 +62,7 @@
 
     .selected-tag {
       background: none;
-      color: $gel-color--black;
+      color: $gel-color--text;
       border-radius: 0;
       border: 0;
       height: auto;
@@ -75,7 +75,7 @@
       background: transparent;
       border: 0;
       cursor: pointer;
-      color: $gel-color--white;
+      color: $gel-color--input-bg;
       fill: currentColor;
       margin-left: 12px;
     }
@@ -88,8 +88,8 @@
       position: absolute;
       left: -1px;
       top: 100%;
-      background: $gel-color--white;
-      border: solid 1px $gel-color--black;
+      background: $gel-color--input-bg;
+      border: solid 1px $gel-color--input-border;
       list-style: none;
       margin-left: 0;
       padding: 0;
@@ -98,10 +98,10 @@
 
       li a, li a:visited {
         @include gel-typography('pica');
-        background: $gel-color--white;
+        background: $gel-color--input-bg;
         padding: 12px;
         display: block;
-        color: $gel-color--tundora;
+        color: $gel-color--text;
       }
 
       li.highlight a, li.highlight.active a {
