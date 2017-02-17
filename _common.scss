@@ -5,13 +5,13 @@
 /**
  * Settings
  */
-$gel-grid-enable--markup-output: true;
+$gel-grid-enable--markup-output: false;
 $gel-grid-enable--1280-breakpoint: true;
 $gel-grid-enable--box-sizing: true;
 
-$gel-type-enable--markup-output: true;
-$gel-type-enable--font-family: true;
-$gel-type-enable--base-elements: true;
+$gel-type-enable--markup-output: false;
+$gel-type-enable--font-family: false;
+$gel-type-enable--base-elements: false;
 
 /**
  * Dependencies.
@@ -22,22 +22,6 @@ $gel-type-enable--base-elements: true;
 @import '~sass-mq';
 
 /**
- * Generic
- */
-
-@import '~normalize.css';
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-/**
  * Foundations
  */
 @import '~gel-typography';
@@ -46,15 +30,7 @@ html {
 @import 'atoms/animations';
 @import 'atoms/colours';
 
-body {
-  color: $gel-color--text;
-  @include gel-typography('body-copy');
-  font-family: Helvetica, Arial, sans-serif;
-}
 
-h1.gel-page-title {
-  margin-bottom: 60px;
-}
 
 @mixin form-field-outline {
   outline: 1px solid $gel-color--black;
