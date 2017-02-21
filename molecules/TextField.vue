@@ -2,7 +2,10 @@
   <gel-form-field :id="inputId" :label="label" :helpText="helpText"
                   :required="required"
                   :errors="validationErrors"
-                  :helpTextDetails="helpTextDetails">
+                  :helpTextDetails="helpTextDetails"
+                  :maxLength="maxLength"
+                  :value="value"
+  >
     <gel-input-text :id="inputId"
                     :errors="validationErrors"
                     :value="value"
@@ -32,6 +35,7 @@
       errors: Array,
       id: String,
       value: String,
+      maxLength: {},
       required: Boolean,
       validator: Function,
     },

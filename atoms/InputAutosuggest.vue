@@ -95,6 +95,7 @@
       padding: 0;
       width: calc(100% + 2px);
       z-index: $gel-z-index-6--dropdown;
+      max-height: 220px;
 
       li a, li a:visited {
         @include gel-typography('pica');

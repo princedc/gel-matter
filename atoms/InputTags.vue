@@ -110,6 +110,7 @@
       margin-left: 0;
       padding: 0;
       width: calc(100% + 2px);
+      max-height: 220px;
       z-index: $gel-z-index-6--dropdown;
 
       li a, li a:visited {

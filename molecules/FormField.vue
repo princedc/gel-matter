@@ -1,7 +1,10 @@
 <template>
   <div class="gel-layout" :class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
     <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
-      <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">{{ label }}{{ requiredIndicator }}</label>
+      <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">
+        {{ label }}{{ requiredIndicator }}
+        <span class="gel-form-field__character-count" v-if="maxLength">Character limit ({{ currentCharCount }}/{{ maxLength }})</span>
+      </label>
       <slot></slot>
       <div class="gel-form-field__errors">
         <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
@@ -18,16 +21,19 @@
 
   export default {
     components: { GelBreakoutBox },
-    props: ["label", "helpText", "errors", "id", "required"],
+    props: ['label', 'helpText', 'errors', 'id', 'required', 'maxLength', 'value'],
     computed: {
-      hasErrors: function() {
+      hasErrors() {
         return this.errors && this.errors.length;
       },
-      requiredIndicator: function() {
+      requiredIndicator() {
         return this.required ? '*' : '';
       },
+      currentCharCount() {
+        return this.value ? this.value.length : 0;
+      },
     },
-  }
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
@@ -51,9 +57,14 @@
       margin-top: 8px;
 
       @include mq($from: gel-bp-m) {
-        margin-top: 30px;
+        margin-top: 28px;
       }
     }
+  }
+
+  .gel-form-field__character-count {
+    float: right;
+    @include gel-typography('brevier');
   }
 
   .gel-form-field__control {

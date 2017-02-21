@@ -54,6 +54,10 @@
     text-align: right;
   }
 
+  .gel-beta-nav__detail {
+    margin: 0;
+  }
+
   .u-float-right {
     float: right;
   }

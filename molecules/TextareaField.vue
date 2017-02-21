@@ -5,6 +5,8 @@
                   :helpText="helpText"
                   :helpTextDetails="helpTextDetails"
                   :required="required"
+                  :maxLength="maxLength"
+                  :value="value"
   >
     <gel-textarea :id="inputId"
                   :value="value"
@@ -36,6 +38,7 @@
       helpText: String,
       helpTextDetails: String,
       errors: Array,
+      maxLength: {},
       required: Boolean,
       schema: Object,
     },

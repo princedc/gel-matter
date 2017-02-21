@@ -206,8 +206,7 @@
       </slot>
     </div>
 
-    <ul ref="dropdownMenu" v-if="dropdownOpen" :transition="transition" class="dropdown-menu"
-        :style="{ 'max-height': maxHeight }">
+    <ul ref="dropdownMenu" v-if="dropdownOpen" :transition="transition" class="dropdown-menu">
       <li v-for="(option, index) in filteredOptions" v-bind:key="index"
           :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer, new: !optionExists(option) }"
           @mouseover="typeAheadPointer = index">

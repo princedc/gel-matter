@@ -84,7 +84,8 @@
   .gel-notification__icon {
     margin-right: 12px;
     display: inline-block;
-    fill: #fff;
+    fill: $gel-color--white;
+    color: $gel-color--white;
     vertical-align: -0.35em;
     @include gel-typography('pica');
   }
@@ -108,7 +109,7 @@
   }
 
   .gel-notification__dismiss {
-    fill: $gel-color--white;
+    color: $gel-color--white;
     position: absolute;
     right: 0;
     top: 1em;
