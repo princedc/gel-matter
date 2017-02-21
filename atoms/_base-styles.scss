@@ -28,6 +28,12 @@ body {
   color: $gel-color--text;
   @include gel-typography('body-copy');
   font-family: Helvetica, Arial, sans-serif;
+
+  &.is-masked {
+    overflow-y: scroll;
+    position: fixed;
+    width: 100%;
+  }
 }
 
 h1.gel-page-title {
@@ -38,4 +44,25 @@ h1.gel-page-title {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+.u-flex-grow {
+  flex: 1;
+}
+
+.u-margin-right {
+  margin-right: 12px;
+}
+
+.u-margin-bottom {
+  margin-bottom: 12px;
+}
+
+.u-full-width {
+  display: block;
+  width: 100%;
+}
+
+.u-clickable {
+  cursor: pointer;
 }

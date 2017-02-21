@@ -1,15 +1,14 @@
 <template>
-  <gel-button class="gel-button" type="transparent" @click="handleClick">
+  <div class="u-clickable" @click="handleClick">
     <gel-icon set="core" icon="no" size="small" />
-  </gel-button>
+  </div>
 </template>
 
 <script>
-  import GelButton from './Button.vue';
   import GelIcon from './Icon.vue';
 
   export default {
-    components: { GelIcon, GelButton },
+    components: { GelIcon },
     methods: {
       handleClick(e) {
         e.preventDefault();

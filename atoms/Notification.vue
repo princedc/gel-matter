@@ -112,6 +112,5 @@
     color: $gel-color--white;
     position: absolute;
     right: 0;
-    top: 1em;
   }
 </style>

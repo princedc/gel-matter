@@ -1,0 +1,83 @@
+<template>
+  <transition name="fade" @after-leave="onLeave">
+    <div class="gel-mask" v-show="isOpen" @click="closeFromEvent" ref="mask">
+      <div class="gel-modal">
+        <slot></slot>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isOpen: true,
+      offsetY: 0,
+    };
+  },
+
+  methods: {
+    close() {
+      document.body.style.top = 'auto';
+      window.scrollTo(0, this.offsetY);
+      document.body.classList.remove('is-masked');
+      this.isOpen = false;
+    },
+    closeFromEvent(e) {
+      // Make sure the element clicked was the mask and not a child whose click
+      // event has bubbled up
+      if (e.currentTarget === this.$refs.mask && e.target !== e.currentTarget) {
+        return;
+      }
+
+      this.close();
+    },
+    open() {
+      this.isOpen = true;
+      this.offsetY = window.pageYOffset;
+      console.log(this.offsetY);
+      document.body.style.top = `-${this.offsetY}px`;
+      document.body.classList.add('is-masked');
+    },
+
+    onLeave() {
+      this.$emit('closed');
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+
+@import '../common';
+
+.gel-mask {
+  background-color: rgba($gel-color--mask-bg, 0.7);
+  display: table;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $gel-z-index-6--mask;
+  transition: opacity 500ms ease;
+}
+
+.gel-modal {
+  background: $gel-color--modal-bg;
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+</style>
