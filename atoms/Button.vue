@@ -12,7 +12,7 @@
 <script>
   import GelIcon from './Icon.vue';
 
-  const allowedTypes = ['primary', 'secondary', 'publish', 'transparent'];
+  const allowedTypes = ['primary', 'secondary', 'publish', 'minor', 'danger'];
 
   export default {
     components: { GelIcon },
@@ -59,38 +59,6 @@
     padding: 16px;
     @include gel-typography('long-primer-bold');
     cursor: pointer;
-  }
-
-  .gel-button--primary {
-    background: $gel-color--text;
-    color: #fff;
-    transition: background-color 200ms ease;
-
-    &:hover {
-      background-color: $gel-color--black;
-      text-decoration: underline;
-    }
-  }
-
-  .gel-button--transparent {
-    background: transparent;
-    padding: 0;
-  }
-
-  .gel-button--publish {
-    background: lighten($gel-color--success, 10%);
-    color: #fff;
-
-    &:hover {
-      background: $gel-color--success;
-      text-decoration: underline;
-    }
-  }
-
-  .gel-button--secondary {
-    border: solid 1px $gel-color--text;
-    color: $gel-color--text;
-    background: transparent;
     text-decoration: none;
 
     &:hover {
@@ -98,13 +66,46 @@
     }
   }
 
+  .gel-button--primary {
+    background: $gel-color--text;
+    color: $gel-color--white;
+    transition: background-color 200ms ease;
+
+    &:hover {
+      background-color: $gel-color--black;
+    }
+  }
+
+  .gel-button--secondary {
+    border: solid 1px $gel-color--text;
+    color: $gel-color--text;
+    background: transparent;
+  }
+
+  .gel-button--minor {
+    background: transparent;
+  }
+
+  .gel-button--publish {
+    background: $gel-color--success;
+    color: $gel-color--white;
+
+    &:hover {
+      background: $gel-color--success-hover;
+    }
+  }
+
+  .gel-button--danger {
+    background: $gel-color--error;
+    color: $gel-color--white;
+
+    &:hover {
+      background: $gel-color--error-hover;
+    }
+  }
+
   .gel-button__icon {
     margin-right: 6px;
     display: inline-block;
-  }
-
-  .u-full-width {
-    display: block;
-    width: 100%;
   }
 </style>

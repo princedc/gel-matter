@@ -2,7 +2,7 @@
   <div class="gel-layout" :class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
     <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
       <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">
-        {{ label }}{{ requiredIndicator }}
+        <span class="u-flex-grow u-margin-right">{{ label }}{{ requiredIndicator }}</span>
         <span class="gel-form-field__character-count" v-if="maxLength">Character limit ({{ currentCharCount }}/{{ maxLength }})</span>
       </label>
       <slot></slot>
@@ -44,13 +44,13 @@
     align-items: flex-start;
 
     .gel-input-label {
+      display: flex;
+      margin-bottom: 8px;
       @include gel-typography('pica-bold');
+
       &.is-invalid {
         color: $gel-color--error;
       }
-
-      margin-bottom: 8px;
-      display: block;
     }
 
     .gel-breakout-box {
@@ -63,7 +63,8 @@
   }
 
   .gel-form-field__character-count {
-    float: right;
+    flex-shrink: 0;
+    align-self: flex-end;
     @include gel-typography('brevier');
   }
 
