@@ -10,18 +10,20 @@
 
 <script>
 export default {
+  props: {
+    width: String,
+  },
   data() {
     return {
-      isOpen: true,
-      offsetY: 0,
+      isOpen: false,
+      previousScrollLocation: 0,
     };
   },
 
   methods: {
     close() {
-      document.body.style.top = 'auto';
-      window.scrollTo(0, this.offsetY);
       document.body.classList.remove('is-masked');
+      window.scrollTo(0, this.previousScrollLocation);
       this.isOpen = false;
     },
     closeFromEvent(e) {
@@ -35,9 +37,8 @@ export default {
     },
     open() {
       this.isOpen = true;
-      this.offsetY = window.pageYOffset;
-      console.log(this.offsetY);
-      document.body.style.top = `-${this.offsetY}px`;
+      this.previousScrollLocation = window.pageYOffset;
+      document.body.style.top = `-${this.previousScrollLocation}px`;
       document.body.classList.add('is-masked');
     },
 
@@ -72,6 +73,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 24px;
+  max-width: 600px;
 }
 
 .fade-enter-active, .fade-leave-active {

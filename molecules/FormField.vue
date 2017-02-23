@@ -78,10 +78,15 @@
     @include gel-typography('long-primer');
     position: absolute;
     bottom: 0;
+    width: 100%;
   }
 
   .gel-form-field__error {
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 8px;
   }
 
 </style>

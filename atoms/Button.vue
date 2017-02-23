@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes" v-on:click="handleClick">
+  <button :class="classes" v-on:click="handleClick" :disabled="disabled">
     <div class="gel-button__icon" v-if="icon || $slots.icon">
       <slot name="icon">
         <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small" />
@@ -30,16 +30,18 @@
           return value === false || ('set' in value && 'icon' in value);
         },
       },
+      disabled: Boolean,
     },
     data() {
       return { something: 'value' };
     },
     computed: {
       classes() {
-        return [
-          'gel-button',
-          `gel-button--${this.type}`,
-        ];
+        return {
+          'gel-button': true,
+          [`gel-button--${this.type}`]: true,
+          'is-disabled': this.disabled,
+        };
       },
     },
     methods: {
@@ -61,8 +63,13 @@
     cursor: pointer;
     text-decoration: none;
 
-    &:hover {
+    &:hover:not(.is-disabled) {
       text-decoration: underline;
+    }
+
+    &.is-disabled {
+      cursor: default;
+      opacity: 0.6;
     }
   }
 
@@ -71,7 +78,7 @@
     color: $gel-color--white;
     transition: background-color 200ms ease;
 
-    &:hover {
+    &:hover:not(.is-disabled) {
       background-color: $gel-color--black;
     }
   }
@@ -90,7 +97,7 @@
     background: $gel-color--success;
     color: $gel-color--white;
 
-    &:hover {
+    &:hover:not(.is-disabled) {
       background: $gel-color--success-hover;
     }
   }
@@ -99,7 +106,7 @@
     background: $gel-color--error;
     color: $gel-color--white;
 
-    &:hover {
+    &:hover:not(.is-disabled) {
       background: $gel-color--error-hover;
     }
   }
