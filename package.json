@@ -5,20 +5,25 @@
   "description": "BBC GEL's Matter library.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node docs/server",
+    "build": "NODE_ENV=production node docs/server"
   },
   "author": "Simon Sinclair",
   "license": "UNLICENSED",
   "dependencies": {
-    "gel-grid": "github:bbc/gel-grid",
-    "gel-iconography-assets": "git+ssh://git@github.com/bbc/gel-iconography-assets",
-    "gel-sass-tools": "git+ssh://git@github.com/bbc/gel-sass-tools",
-    "gel-typography": "git+ssh://git@github.com/bbc/gel-typography",
+    "gel-grid": "https://github.com/bbc/gel-grid",
+    "gel-iconography-assets": "https://github.com/bbc/gel-iconography-assets",
+    "gel-sass-tools": "https://github.com/bbc/gel-sass-tools",
+    "gel-typography": "https://github.com/bbc/gel-typography",
     "normalize.css": "^5.0.0",
     "sass-mq": "^3.3.1",
-    "vue-select": "sagalbot/vue-select#vue2"
+    "vue-select": "https://github.com/sagalbot/vue-select#vue2"
   },
   "devDependencies": {
+    "bluebird": "^3.4.7",
+    "collider-core": "https://github.com/bbc/collider-core",
+    "express": "^4.14.0",
+    "vue-select": "sagalbot/vue-select#vue2",
     "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.1.0",
