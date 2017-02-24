@@ -5,7 +5,7 @@ import GelLabel from './Label.vue';
 import GelLinkButton from './LinkButton.vue';
 import GelSelect from './Select.vue';
 import GelStaffBanner from './StaffBanner.vue';
-import GelTextArea from './TextArea.vue';
+import GelTextarea from './Textarea.vue';
 
 export {
   GelButton,
@@ -15,5 +15,5 @@ export {
   GelLinkButton,
   GelSelect,
   GelStaffBanner,
-  GelTextArea,
+  GelTextarea,
 };
