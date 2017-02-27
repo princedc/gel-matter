@@ -3,7 +3,7 @@
     <div class="gel-wrap">
       <div class="gel-layout">
         <div class="gel-layout__item gel-2/3 gel-beta-nav__content">
-          <slot>
+          <slot></slot>
         </div>
         <div class="gel-beta-nav__cta gel-layout__item gel-1/3">
           <gel-link-button href="https://www.bbc.co.uk/gel" class="u-float-right">
