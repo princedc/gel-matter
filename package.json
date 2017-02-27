@@ -23,7 +23,6 @@
     "bluebird": "^3.4.7",
     "collider-core": "https://github.com/bbc/collider-core",
     "express": "^4.14.0",
-    "vue-select": "sagalbot/vue-select#vue2",
     "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.1.0",
