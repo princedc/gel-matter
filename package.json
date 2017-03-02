@@ -20,13 +20,19 @@
     "vue-select": "git+ssh://git@github.com/sagalbot/vue-select#vue2"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
     "bluebird": "^3.4.7",
     "collider-core": "git+ssh://git@github.com/bbc/collider-core",
     "express": "^4.14.0",
-    "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-plugin-html": "^2.0.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.2.0",
+    "express": "^4.14.0",
+    "file-loader": "^0.10.0",
+    "sass-loader": "^6.0.2",
+    "scss-loader": "^0.0.1",
+    "vue-loader": "^11.1.2",
+    "vue-select": "sagalbot/vue-select#vue2"
   }
 }

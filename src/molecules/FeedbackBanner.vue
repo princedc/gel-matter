@@ -24,8 +24,8 @@
   import GelLinkButton from '../atoms/LinkButton.vue';
 
   export default {
-    components: {GelIcon, GelLinkButton}
-  }
+    components: { GelIcon, GelLinkButton },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

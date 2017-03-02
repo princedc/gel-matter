@@ -31,3 +31,13 @@ export default {
 <gel-masthead></gel-masthead>
 
 ```
+
+# Creating your matter library
+
+...
+
+## Create a example file for your new component
+While writing your component, you'll want to be able to see what it actually looks like! You can do this by simply adding a new example file.
+It might be a good idea to create this file first, and write the API you'd like to have. In order to ease layout, you have all the usual gel foundation css classes available, along with grandstand.
+
+If you try to visit this page, it will obviously give you an error, so you'll need to create your component source!
