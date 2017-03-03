@@ -22,6 +22,8 @@
   "devDependencies": {
     "bluebird": "^3.4.7",
     "collider-core": "git+ssh://git@github.com/bbc/collider-core",
+    "eslint": "^3.16.1",
+    "eslint-plugin-html": "^2.0.1",
     "express": "^4.15.0"
   }
 }
