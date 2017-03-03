@@ -23,7 +23,7 @@
       size: {
         type: String,
         default: 'medium',
-        validator: function (value) {
+        validator (value) {
           return validSizes.indexOf(value) > -1
         }
       }
