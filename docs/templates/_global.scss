@@ -1,0 +1,24 @@
+$gel-grid-enable--markup-output: true;
+$gel-grid-enable--1280-breakpoint: true;
+$gel-grid-enable--box-sizing: true;
+
+$gel-type-enable--markup-output: true;
+$gel-type-enable--font-family: true;
+$gel-type-enable--base-elements: true;
+
+
+/**
+ * Dependencies.
+ */
+
+// "~" tells Webpack to import this 'like' a module.
+@import '~gel-sass-tools';
+@import '~sass-mq';
+
+
+/**
+ * Foundations
+ */
+
+@import '~gel-typography';
+@import '~gel-grid';
