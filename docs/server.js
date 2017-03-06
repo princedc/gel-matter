@@ -17,7 +17,14 @@ const docs = new Collider({
   templates: resolve('templates/'),
 });
 
-function init() {
+function init(results) {
+  results.forEach((stats) => {
+    if (stats && stats.errors && stats.warnings) {
+      if (stats.errors.length > 0) stats.errors.forEach(err => console.error(err));
+      if (stats.warnings.length > 0) stats.warnings.forEach(warning => console.warn(warning));
+    }
+  });
+
   server.listen(8080, () => console.log('Server started at localhost:8080.'));
 }
 
