@@ -2,7 +2,7 @@
   <div class="gel-layout" :class="{ 'is-invalid': hasErrors, 'gel-form-field': true }">
     <div class="gel-layout__item gel-6/12@m gel-5/12@xxl gel-form-field__control">
       <label :for="id" :class="'gel-input-label' + (hasErrors ? ' is-invalid' : '')">
-        <span class="u-flex-grow u-margin-right">{{ label }}{{ requiredIndicator }}</span>
+        <span class="u-flex-grow u-margin-right">{{ label }} <small v-if="!required">(optional)</small></span>
         <span class="gel-form-field__character-count" v-if="maxLength">Character limit ({{ currentCharCount }}/{{ maxLength }})</span>
       </label>
       <slot></slot>
@@ -25,9 +25,6 @@
     computed: {
       hasErrors() {
         return this.errors && this.errors.length;
-      },
-      requiredIndicator() {
-        return this.required ? '*' : '';
       },
       currentCharCount() {
         return this.value ? this.value.length : 0;

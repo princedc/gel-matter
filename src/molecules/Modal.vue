@@ -1,8 +1,14 @@
 <template>
   <transition name="fade" @after-leave="onLeave">
     <div class="gel-mask" v-show="isOpen" @click="closeFromEvent" ref="mask">
-      <div class="gel-modal">
+      <div class="gel-modal" tabindex="-1" @keydown.esc="dismissOnEsc && closeFromEvent($event)" ref="container">
         <slot></slot>
+        <div
+          class="ui-modal__focus-redirect"
+          tabindex="0"
+
+          @focus.stop="redirectFocus"
+        ></div>
       </div>
     </div>
   </transition>
@@ -12,6 +18,10 @@
 export default {
   props: {
     width: String,
+    dismissOnEsc: {
+      type: Boolean,
+      default: true,
+    }
   },
   data() {
     return {
@@ -20,12 +30,24 @@ export default {
     };
   },
 
+  watch: {
+    isOpen() {
+      this.$nextTick(() => {
+        this[this.isOpen ? 'onOpen' : 'onClose']();
+      });
+    },
+  },
+
   methods: {
     close() {
-      document.body.classList.remove('is-masked');
-      window.scrollTo(0, this.previousScrollLocation);
       this.isOpen = false;
     },
+
+    onClose() {
+      document.body.classList.remove('is-masked');
+      window.scrollTo(0, this.previousScrollLocation);
+    },
+
     closeFromEvent(e) {
       // Make sure the element clicked was the mask and not a child whose click
       // event has bubbled up
@@ -60,6 +82,13 @@ export default {
       this.previousScrollLocation = window.pageYOffset;
       document.body.style.top = `-${this.previousScrollLocation}px`;
       document.body.classList.add('is-masked');
+    },
+
+    onOpen() {
+      this.previousFocusedElement = document.activeElement;
+      this.$refs.container.focus();
+
+      document.addEventListener('focus', this.restrictFocus, true);
     },
 
     onLeave() {
