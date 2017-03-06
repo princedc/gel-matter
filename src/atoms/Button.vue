@@ -2,6 +2,7 @@
   <button
     class="gel-button"
     :class="classes"
+    :type="buttonType"
     v-on:click="handleClick"
     :disabled="disabled"
   >
@@ -12,7 +13,7 @@
     </div>
 
     <slot></slot>
-    
+
   </button>
 </template>
 
@@ -30,6 +31,10 @@
         validation(value) {
           return allowedTypes.indexOf(value);
         },
+      },
+      buttonType: {
+        type: String,
+        default: 'button',
       },
       icon: {
         default: false,

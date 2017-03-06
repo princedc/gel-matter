@@ -10,7 +10,6 @@
 
   export default {
     components: { GelIcon },
-    props: ['helpText'],
   };
 </script>
 
