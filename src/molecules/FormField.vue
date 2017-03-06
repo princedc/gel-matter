@@ -10,8 +10,8 @@
         <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
       </div>
     </div>
-    <div class="gel-layout__item gel-6/12@m gel-5/12@xxl">
-      <gel-breakout-box class="gel-breakout-box" :helpText="helpText"/>
+    <div class="gel-layout__item gel-6/12@m gel-5/12@xxl" v-if="helpText || $slots.helpText">
+      <gel-breakout-box class="gel-breakout-box"><slot name="helpText"><p>{{ helpText }}</p></slot></gel-breakout-box>
     </div>
   </div>
 </template>
@@ -70,15 +70,21 @@
 
   .gel-form-field__control {
     position: relative;
-    padding-bottom: 1.25em;
+    @include mq($from: gel-bp-m) {
+      padding-bottom: 1.25em;
+    }
   }
 
   .gel-form-field__errors {
+    padding-top: 8px;
     color: $gel-color--error;
-    @include gel-typography('long-primer');
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    @include gel-typography('long-primer');
+    @include mq($from: gel-bp-m) {
+      padding-top: 0;
+      position: absolute;
+      bottom: 0;
+    }
   }
 
   .gel-form-field__error {

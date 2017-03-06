@@ -35,6 +35,26 @@ export default {
 
       this.close();
     },
+
+    redirectFocus() {
+      this.$refs.container.focus();
+    },
+
+    restrictFocus(e) {
+      if (!this.$refs.container.contains(e.target)) {
+        e.stopPropagation();
+        this.$refs.container.focus();
+      }
+    },
+
+    teardownModal() {
+      // classlist.remove(document.body, 'ui-modal--is-open');
+      document.removeEventListener('focus', this.restrictFocus, true);
+      if (this.lastfocusedElement) {
+        this.lastfocusedElement.focus();
+      }
+    },
+
     open() {
       this.isOpen = true;
       this.previousScrollLocation = window.pageYOffset;

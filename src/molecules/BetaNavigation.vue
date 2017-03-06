@@ -2,11 +2,11 @@
   <div class="gel-beta-nav">
     <div class="gel-wrap">
       <div class="gel-layout">
-        <div class="gel-layout__item gel-2/3 gel-beta-nav__content">
+        <div class="gel-layout__item gel-1/1 gel-2/3@l gel-beta-nav__content">
           <slot></slot>
         </div>
-        <div class="gel-beta-nav__cta gel-layout__item gel-1/3">
-          <gel-link-button href="https://www.bbc.co.uk/gel" class="u-float-right">
+        <div class="gel-beta-nav__cta gel-1/1 gel-1/3@l">
+          <gel-link-button href="https://www.bbc.co.uk/gel">
             Go the the GEL site
           </gel-link-button>
         </div>
@@ -51,15 +51,17 @@
   }
 
   .gel-beta-nav__cta {
-    text-align: right;
+    @include gel-layout-item;
+    margin-top: 12px;
+    
+    @include mq($from: gel-bp-l) {
+      margin-top: 0;
+      text-align: right;
+    }
   }
 
   .gel-beta-nav__detail {
     margin: 0;
-  }
-
-  .u-float-right {
-    float: right;
   }
 
   /**

@@ -5,6 +5,7 @@
                   :helpText="helpText"
                   :helpTextDetails="helpTextDetails"
                   :required="required">
+    <div slot="helpText" v-if="$slots.helpText"><slot name="helpText"></slot></div>
     <gel-select :id="inputId"
                 :value="value"
                 :errors="validationErrors"

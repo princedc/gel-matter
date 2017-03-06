@@ -2,10 +2,10 @@
   <div class="gel-feedback-banner">
     <div class="gel-wrap">
       <div class="gel-layout">
-        <div class="gel-layout__item gel-2/12">
+        <div class="gel-feedback-banner__icon gel-layout__item gel-1/6@m gel-1/5@l">
           <gel-icon set="social" icon="feedback" size="large" />
         </div>
-        <div class="gel-layout__item gel-6/12">
+        <div class="gel-layout__item gel-2/3@m gel-3/5@l">
           <slot name="title">
             <h2 class="gel-feedback-banner__title">How are we doing?</h2>
           </slot>
@@ -36,7 +36,10 @@
     color: $gel-color--text;
     padding: 48px 0;
     @include gel-typography('great-primer');
+  }
 
+  .gel-feedback-banner__icon {
+    padding-bottom: 24px;
   }
 
   .gel-feedback-banner__title {
@@ -46,7 +49,7 @@
   }
 
   .gel-feedback-banner__cta {
-    margin-top: 24px;
+    margin-top: 16px;
   }
 
   .u-float-right {

@@ -1,7 +1,7 @@
 <template>
-    <div v-if="helpText" class="gel-breakout-box">
+    <div class="gel-breakout-box">
       <gel-icon class="gel-icon gel-icon--inline" color="#404040" set="core" icon="info" size="small" />
-      <p>{{ helpText }}</p>
+      <slot></slot>
     </div>
 </template>
 
@@ -9,14 +9,14 @@
   import GelIcon from '../atoms/Icon.vue';
 
   export default {
-    components: {GelIcon},
-    props: ["helpText"]
-  }
+    components: { GelIcon },
+    props: ['helpText'],
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
   @import '../common';
-  
+
   .gel-breakout-box {
     background: #dcdcdc;
     padding: 8px;
