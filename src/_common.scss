@@ -5,13 +5,17 @@
 /**
  * Settings
  */
+
 $gel-grid-enable--markup-output: false;
 $gel-grid-enable--1280-breakpoint: true;
 $gel-grid-enable--box-sizing: true;
 
+// These are page-level type settings and are
+// therefore disabled at a component level.
 $gel-type-enable--markup-output: false;
 $gel-type-enable--font-family: false;
 $gel-type-enable--base-elements: false;
+
 
 /**
  * Dependencies.
@@ -21,16 +25,16 @@ $gel-type-enable--base-elements: false;
 @import '~gel-sass-tools';
 @import '~sass-mq';
 
+
 /**
  * Foundations
  */
+
 @import '~gel-typography';
 @import '~gel-grid';
 @import 'atoms/gel-z-index';
 @import 'atoms/animations';
 @import 'atoms/colours';
-
-
 
 @mixin form-field-outline {
   outline: 1px solid $gel-color--black;
