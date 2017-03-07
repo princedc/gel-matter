@@ -21,7 +21,7 @@ export default {
     dismissOnEsc: {
       type: Boolean,
       default: true,
-    }
+    },
   },
   data() {
     return {

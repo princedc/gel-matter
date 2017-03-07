@@ -20,8 +20,8 @@
   import GelLinkButton from '../atoms/LinkButton.vue';
 
   export default {
-    components: {GelIcon, GelLinkButton}
-  }
+    components: { GelIcon, GelLinkButton },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
@@ -53,7 +53,7 @@
   .gel-beta-nav__cta {
     @include gel-layout-item;
     margin-top: 12px;
-    
+
     @include mq($from: gel-bp-l) {
       margin-top: 0;
       text-align: right;

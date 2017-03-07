@@ -228,6 +228,8 @@
 
 
 <script type="text/babel">
+  /* eslint-disable */
+
   import pointerScroll from './mixins/pointerScroll'
   import typeAheadPointer from './mixins/typeAheadPointer'
   import ajax from './mixins/ajax'

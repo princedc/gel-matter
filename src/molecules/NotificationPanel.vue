@@ -21,7 +21,9 @@
 
 </template>
 
-<script type="text/ecmascript-6">
+<script>
+  /* eslint-disable no-param-reassign */
+
   import GelNotification from '../atoms/Notification.vue';
 
   const allowedTypes = ['error', 'success'];

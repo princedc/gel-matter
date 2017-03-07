@@ -25,11 +25,11 @@
       errors: Array,
     },
     methods: {
-      updateValue: function(value) {
+      updateValue(value) {
         this.$emit('input', value);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

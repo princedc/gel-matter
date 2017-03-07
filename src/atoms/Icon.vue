@@ -23,20 +23,21 @@
       size: {
         type: String,
         default: 'medium',
-        validator (value) {
-          return validSizes.indexOf(value) > -1
-        }
-      }
+        validator(value) {
+          return validSizes.indexOf(value) > -1;
+        },
+      },
     },
-    created () {
+    created() {
+      // eslint-disable-next-line global-require, import/no-dynamic-require
       this.svgUrl = require(`gel-iconography-assets/dist/${this.set}/set/gel-icons-${this.set}-set.svg`);
     },
     computed: {
-      iconSize: function() {
+      iconSize() {
         return validSizes.indexOf(this.size) > -1 ? this.size : 'medium';
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

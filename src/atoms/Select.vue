@@ -14,40 +14,41 @@
 
 <script>
   import GelIcon from './Icon.vue';
+
   export default {
     components: { GelIcon },
-    data: function() {
+    data() {
       return {
         selectIsFocused: false,
-      }
+      };
     },
     props: {
       value: String,
       options: Array,
       errors: {
         type: Array,
-        default: function() {return [];}
-      }
+        default() { return []; },
+      },
     },
     computed: {
-      classes: function() {
+      classes() {
         return {
           'gel-select': true,
           'is-invalid': this.errors.length > 0,
           'is-focused': this.selectIsFocused,
-        }
-      }
+        };
+      },
     },
     methods: {
-      updateValue: function(value) {
+      updateValue(value) {
         this.$emit('input', value);
       },
-      handleBlur: function(value) {
+      handleBlur() {
         this.selectIsFocused = false;
         this.$emit('blur');
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">

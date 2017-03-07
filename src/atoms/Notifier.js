@@ -1,4 +1,4 @@
-const consoleLogger = ({message, type}) => console.log(`[${type}]: ${message}`); // eslint-disable-line
+const consoleLogger = ({ message, type }) => console.log(`[${type}]: ${message}`); // eslint-disable-line no-console
 
 let notifyMethods = {
   error: consoleLogger,
@@ -13,7 +13,7 @@ const Notifier = {
 
   notifyNow({ type, message }) {
     if (type in notifyMethods === false) {
-      type = 'info';
+      type = 'info'; // eslint-disable-line no-param-reassign
     }
     notifyMethods[type].apply(null, [{ message, type }]);
   },
