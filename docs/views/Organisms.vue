@@ -1,12 +1,24 @@
 <template>
-  <h2>Organisms</h2>
+  <div class="gel-layout">
+    <div class="gel-layout__item">
+
+      <h2>Organisms</h2>
+
+      <div class="gel-layout">
+        <div class="gel-layout__item">
+          <p>Ain't got none.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </template>
 
 <script>
-  import Organisms from '../../src/organisms';
+  import * as Organisms from '../../src/organisms';
 
   export default {
-    components: { Organisms },
+    components: { ...Organisms },
   };
 </script>
 

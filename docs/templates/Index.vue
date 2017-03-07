@@ -29,13 +29,9 @@
       </div>
     </div>
 
-    <div class="gel-layout">
-      <div class="gel-layout__item">
-        <keep-alive>
-          <component :is="currentView"></component>
-        </keep-alive>
-      </div>
-    </div>
+    <keep-alive>
+      <component :is="currentView"></component>
+    </keep-alive>
   </div>
 </template>
 
