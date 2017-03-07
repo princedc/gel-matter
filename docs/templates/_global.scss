@@ -11,14 +11,31 @@ $gel-type-enable--base-elements: true;
  * Dependencies.
  */
 
+@import '~normalize.css';
+
 // "~" tells Webpack to import this 'like' a module.
 @import '~gel-sass-tools';
 @import '~sass-mq';
 
 
 /**
- * Foundations
+ * Foundations.
  */
 
 @import '~gel-typography';
 @import '~gel-grid';
+
+
+/**
+ * Base.
+ */
+
+body {
+  color: #333;
+}
+
+a {
+  color: #E6711B;
+  font-weight: bold;
+  text-decoration: none;
+}
