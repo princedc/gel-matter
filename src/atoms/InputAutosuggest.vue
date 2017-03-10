@@ -7,6 +7,7 @@
               taggable
               pushTags
               ignoreCase
+              hideSelectedOptions
               @blur="$emit('blur')"
     />
   </div>

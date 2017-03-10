@@ -219,8 +219,11 @@
         <li v-if="!filteredOptions.length" class="divider"></li>
       </transition>
       <transition name="fade">
-        <li v-if="!filteredOptions.length" class="text-center">
+        <li v-if="!filteredOptions.length && !isOptionSelected(search.toLowerCase())" class="text-center">
           <slot name="no-options">Sorry, no matching options.</slot>
+        </li>
+        <li v-if="!filteredOptions.length && isOptionSelected(search.toLowerCase())" class="text-center">
+          <slot name="no-options">You've already selected that!</slot>
         </li>
       </transition>
     </ul>
@@ -442,6 +445,11 @@
       },
 
       ignoreCase: {
+        type: Boolean,
+        default: false,
+      },
+
+      hideSelectedOptions: {
         type: Boolean,
         default: false,
       },
@@ -732,6 +740,9 @@
        */
       filteredOptions() {
         let options = this.mutableOptions.filter((option) => {
+          if (this.hideSelectedOptions && this.isOptionSelected(option)) {
+            return false;
+          }
           if (typeof option === 'object') {
             return option[this.label].toLowerCase().indexOf(this.search.toLowerCase()) > -1
           }

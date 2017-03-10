@@ -8,6 +8,7 @@
               pushTags
               taggable
               ignoreCase
+              hideSelectedOptions
     />
   </div>
 </template>
