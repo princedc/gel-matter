@@ -88,23 +88,23 @@
     font-size: 20px;
   }
 
-  .v-select input[type=search],
-  .v-select input[type=search]:focus {
+  .v-select__input,
+  .v-select__input:focus {
     display: inline-block;
     border: none;
     outline: none;
     margin: 0;
     padding: 0 .5em;
-    width: 10em;
     max-width: 100%;
     background: none;
     position: relative;
     box-shadow: none;
     float: left;
     clear: none;
+    box-sizing: content-box;
   }
 
-  .v-select input[type=search]:disabled {
+  .v-select__input:disabled {
     cursor: pointer;
   }
 
@@ -192,11 +192,12 @@
         @keypress.enter.prevent="typeAheadSelect"
         @blur="handleBlur"
         @focus="open = true"
-        type="search"
-        class="form-control"
+        type="text"
+        class="form-control v-select__input"
         :placeholder="searchPlaceholder"
         :readonly="!searchable"
         :style="{ width: isValueEmpty ? '100%' : 'auto' }"
+        v-input-autosize
       >
 
       <i v-if="!noDrop" ref="openIndicator" role="presentation" class="open-indicator"></i>
@@ -238,6 +239,21 @@
   export default {
     mixins: [pointerScroll, typeAheadPointer, ajax],
     components: {DismissButton},
+    directives: {
+      InputAutosize: {
+        inserted(el) {
+          if (typeof window !== 'undefined') {
+            const autosizeInput = require('autosize-input');
+            autosizeInput(el);
+          }
+        },
+        update(el) {
+          if (el.value == '') {
+            el.style.width = '10px';
+          }
+        },
+      }
+    },
     props: {
       /**
        * Contains the currently selected value. Very similar to a
@@ -722,7 +738,7 @@
           return option.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         })
         if (this.taggable && this.search.length && !this.optionExists(this.search)) {
-          options.unshift(this.search);
+          options.unshift(this.search.toLowerCase());
         }
         return options
       },

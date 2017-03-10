@@ -55,7 +55,7 @@
       border: 0;
     }
 
-    input[type=search], input[type=search]:focus {
+    .v-select__input, .v-select__input:focus {
       @include gel-typography('pica');
       padding: 12px;
     }
