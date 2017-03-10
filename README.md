@@ -41,3 +41,14 @@ While writing your component, you'll want to be able to see what it actually loo
 It might be a good idea to create this file first, and write the API you'd like to have. In order to ease layout, you have all the usual gel foundation css classes available, along with grandstand.
 
 If you try to visit this page, it will obviously give you an error, so you'll need to create your component source!
+
+## Draft Matter Specification
+- Atoms MUST NOT have any external positional styling defined in them.
+-- This means no margins, position, top, left, etc CSS properties at all on the top level element. This makes them much more re-usable. Utility classes or molecule/organism specific styles can be used to handle layout.
+- Molecules and Organisms MUST use external positional styling only when the component doesn't make sense without it.
+-- For example a fixed heading, or modal, absolutely should have positional styles. But margins and offsets on a promo would make it harder to just drop in.
+- Matter Libraries use GEL Foundations (Typography, Grid, Iconography) for their core styles.
+- Matter Libraries MUST NOT use global css class names for any of the GEL Foundations, but use the SCSS mixins instead.
+-- This is to make the generated css as easy to re-use as possible outside of Collider.
+- Matter libraries MUST have no expectations of the global environment - JS, CSS or otherwise.
+-- Dependencies should be included with each component that needs them.
