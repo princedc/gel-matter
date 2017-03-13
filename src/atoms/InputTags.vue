@@ -1,5 +1,5 @@
 <template>
-  <div style="position: relative;" class="gel-tags" :class="errors ? 'is-invalid' : ''">
+  <div style="position: relative;" class="gel-tags" :class="errors && errors.length ? 'is-invalid' : ''">
     <v-select :id="id"
               multiple
               :value="value"

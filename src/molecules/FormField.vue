@@ -6,7 +6,7 @@
         <span class="gel-form-field__character-count" v-if="maxLength">Character limit ({{ currentCharCount }}/{{ maxLength }})</span>
       </label>
       <slot></slot>
-      <div class="gel-form-field__errors">
+      <div class="gel-form-field__errors" v-if="errors && errors.length">
         <p v-for="error in errors" class="gel-form-field__error">{{ error }}</p>
       </div>
     </div>
