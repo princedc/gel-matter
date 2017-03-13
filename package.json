@@ -18,7 +18,7 @@
     "gel-typography": "git+ssh://git@github.com/bbc/gel-typography",
     "normalize.css": "^5.0.0",
     "sass-mq": "^3.3.2",
-    "vue-select": "git+ssh://git@github.com/sagalbot/vue-select#vue2"
+    "vue-select": "git+ssh://git@github.com/sagalbot/vue-select"
   },
   "devDependencies": {
     "bluebird": "^3.4.7",
