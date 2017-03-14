@@ -211,7 +211,7 @@
       <li v-for="(option, index) in filteredOptions" v-bind:key="index"
           :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer, new: !optionExists(option) }"
           @mouseover="typeAheadPointer = index">
-        <a @mousedown.prevent="select(option)">
+        <a @mousedown.prevent="select(option)" class="dropdown-menu__item">
           {{ optionExists(option) ? getOptionLabel(option) : newOptionTemplate(getOptionLabel(option))  }}
         </a>
       </li>
@@ -223,7 +223,7 @@
           <slot name="no-options">Sorry, no matching options.</slot>
         </li>
         <li v-if="!filteredOptions.length && isOptionSelected(search.toLowerCase())" class="text-center">
-          <slot name="no-options">You've already selected that!</slot>
+          <slot name="no-options"><span class="dropdown-menu__item">You've already selected that!</span></slot>
         </li>
       </transition>
     </ul>

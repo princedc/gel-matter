@@ -114,7 +114,7 @@
       max-height: 220px;
       z-index: $gel-z-index-6--dropdown;
 
-      li a, li a:visited {
+      li a, li a:visited, .dropdown-menu__item {
         @include gel-typography('pica');
         background: $gel-color--input-bg;
         padding: 12px 12px;

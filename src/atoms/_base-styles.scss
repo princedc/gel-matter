@@ -24,9 +24,16 @@ html {
   box-sizing: border-box;
 }
 
+/**
+ * because we are overriding the box-sizing above, we have to set it back to the default for orbit
+ * to display properly.
+ */
+#orb-banner, #orb-footer {
+  box-sizing: content-box;
+}
+
 body {
   color: $gel-color--text;
-  @include gel-typography('body-copy');
   font-family: Helvetica, Arial, sans-serif;
 
   &.is-masked {
