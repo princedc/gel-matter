@@ -10,6 +10,7 @@
                     :errors="validationErrors"
                     :value="value"
                     :type="type"
+                    :placeholder="placeholder"
                     @input="updateValue(arguments[0])"
                     @blur="dirty = true"
     />
