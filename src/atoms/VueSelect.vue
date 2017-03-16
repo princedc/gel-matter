@@ -444,11 +444,28 @@
         },
       },
 
-      ignoreCase: {
+      /**
+       * Force input to lowercase. Implies ignoreCase=true
+       * @type {Object}
+       */
+      forceLowercase: {
         type: Boolean,
         default: false,
       },
 
+      /**
+       * Make option search case-sensitive
+       * @type {Object}
+       */
+      matchCase: {
+        type: Boolean,
+        default: false,
+      },
+
+      /**
+       * Do not show selected options in the dropdown
+       * @type {Object}
+       */
       hideSelectedOptions: {
         type: Boolean,
         default: false,
@@ -671,9 +688,9 @@
         let exists = false;
 
         this.mutableOptions.forEach((opt) => {
-          let optionLabel = typeof opt === 'object' ? opt[this.label].toLowerCase() : opt.toLowerCase();
+          let optionLabel = typeof opt === 'object' ? opt[this.label] : opt;
           let search = option;
-          if (this.ignoreCase) {
+          if (this.matchCase === false) {
             search = option.toLowerCase();
             optionLabel = opt.toLowerCase();
           }
@@ -749,7 +766,8 @@
           return option.toLowerCase().indexOf(this.search.toLowerCase()) > -1
         })
         if (this.taggable && this.search.length && !this.optionExists(this.search)) {
-          options.unshift(this.search.toLowerCase());
+          const newOption = this.forceLowercase ? this.search.toLowerCase() : this.search;
+          options.unshift(newOption);
         }
         return options
       },

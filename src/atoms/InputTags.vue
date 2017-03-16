@@ -7,7 +7,7 @@
               v-on:input="updateValue(arguments[0])"
               pushTags
               taggable
-              ignoreCase
+              forceLowercase
               hideSelectedOptions
     />
   </div>
