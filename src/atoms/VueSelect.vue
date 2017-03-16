@@ -190,6 +190,7 @@
         @keydown.up.prevent="typeAheadUp"
         @keydown.down.prevent="typeAheadDown"
         @keypress.enter.prevent="typeAheadSelect"
+        @keydown.tab="selectFocusedOption"
         @blur="handleBlur"
         @focus="open = true"
         type="text"
@@ -470,6 +471,11 @@
         type: Boolean,
         default: false,
       },
+
+      tabSelectsValue: {
+        type: Boolean,
+        default: false,
+      },
     },
 
     data() {
@@ -711,6 +717,12 @@
       optionsSorter(a, b) {
         return this.getOptionLabel(a).localeCompare(this.getOptionLabel(b))
       },
+
+      selectFocusedOption(e) {
+        if (this.tabSelectsValue) {
+          this.typeAheadSelect(e);
+        }
+      }
     },
 
     computed: {
