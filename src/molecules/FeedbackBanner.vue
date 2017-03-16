@@ -10,7 +10,7 @@
             <h2 class="gel-feedback-banner__title">How are we doing?</h2>
           </slot>
           <slot></slot>
-          <gel-link-button class="gel-feedback-banner__cta" href="https://www.bbc.co.uk/gel">
+          <gel-link-button class="gel-feedback-banner__cta" :href="feedbackLink">
             <gel-icon slot="icon" class="gel-button__icon" set="core" icon="external-link" size="small" /> Tell us what you think
           </gel-link-button>
         </div>
@@ -25,6 +25,12 @@
 
   export default {
     components: { GelIcon, GelLinkButton },
+    props: {
+      feedbackLink: {
+        type: String,
+        required: true,
+      },
+    },
   };
 </script>
 

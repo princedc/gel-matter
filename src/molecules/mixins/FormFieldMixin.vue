@@ -10,6 +10,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    placeholder: String,
   },
   computed: {
     inputId: function idGen() {

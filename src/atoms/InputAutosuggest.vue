@@ -1,14 +1,14 @@
 <template>
   <div style="position: relative;" class="gel-autosuggest" :class="(errors && errors.length) > 0 ? 'is-invalid' : ''">
-    <v-select :id="id"
-              :value="value"
-              :options="options"
-              v-on:input="updateValue(arguments[0])"
-              taggable
-              pushTags
-              ignoreCase
-              hideSelectedOptions
-              @blur="$emit('blur')"
+    <v-select
+      :id="id"
+      :value="value"
+      :options="options"
+      v-on:input="updateValue(arguments[0])"
+      taggable
+      pushTags
+      hideSelectedOptions
+      @blur="$emit('blur')"
     />
   </div>
 </template>

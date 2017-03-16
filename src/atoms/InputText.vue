@@ -5,6 +5,7 @@
            v-on:input="updateValue($event.target.value)"
            :class="classes"
            @blur="$emit('blur')"
+           :placeholder="placeholder"
     />
 </template>
 
@@ -24,6 +25,7 @@
         type: Array,
         default() { return []; },
       },
+      placeholder: String,
     },
     computed: {
       classes() {
