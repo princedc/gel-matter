@@ -1,18 +1,22 @@
 <template>
-  <gel-form-field :id="inputId" :label="label" :helpText="helpText"
-                  :required="required"
-                  :errors="validationErrors"
-                  :helpTextDetails="helpTextDetails"
-                  :maxLength="maxLength"
-                  :value="value"
+  <gel-form-field
+    :id="inputId"
+    :label="label"
+    :helpText="helpText"
+    :required="required"
+    :errors="validationErrors"
+    :helpTextDetails="helpTextDetails"
+    :maxLength="maxLength"
+    :value="value"
   >
-    <gel-input-text :id="inputId"
-                    :errors="validationErrors"
-                    :value="value"
-                    :type="type"
-                    :placeholder="placeholder"
-                    @input="updateValue(arguments[0])"
-                    @blur="dirty = true"
+    <gel-input-text
+      :id="inputId"
+      :errors="validationErrors"
+      :value="value"
+      :type="type"
+      :placeholder="placeholder"
+      @input="updateValue(arguments[0])"
+      @blur="dirty = true"
     />
   </gel-form-field>
 </template>

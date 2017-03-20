@@ -1,14 +1,15 @@
 <template>
   <div :class="classes">
     <gel-icon set="core" icon="down" size="small" class="gel-select__icon" />
-  <select class=""
-          :value="value"
-          @change="updateValue($event.target.value)"
-          @focus="selectIsFocused = true"
-          @blur="handleBlur"
-  >
-    <option v-for="option in options" :value="option.value">{{ option.label }}</option>
-  </select>
+    <select
+      :aria-invalid="isInvalid"
+      :value="value"
+      @change="updateValue($event.target.value)"
+      @focus="selectIsFocused = true"
+      @blur="handleBlur"
+    >
+      <option v-for="option in options" :value="option.value">{{ option.label }}</option>
+    </select>
   </div>
 </template>
 
@@ -34,9 +35,12 @@
       classes() {
         return {
           'gel-select': true,
-          'is-invalid': this.errors.length > 0,
+          'is-invalid': this.isInvalid,
           'is-focused': this.selectIsFocused,
         };
+      },
+      isInvalid() {
+        return this.errors.length > 0;
       },
     },
     methods: {

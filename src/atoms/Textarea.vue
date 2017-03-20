@@ -1,11 +1,12 @@
 <template>
-    <textarea :id="id"
-              :value="value"
-              :class="classes"
-              rows="3"
-              @input="updateValue($event.target.value)"
-              @blur="$emit('blur')"
-
+    <textarea
+      rows="3"
+      :aria-invalid="isInvalid"
+      :id="id"
+      :class="classes"
+      :value="value"
+      @input="updateValue($event.target.value)"
+      @blur="$emit('blur')"
     ></textarea>
 </template>
 
@@ -23,8 +24,11 @@
       classes() {
         return {
           'gel-textarea': true,
-          'is-invalid': this.errors.length > 0,
+          'is-invalid': this.isInvalid,
         };
+      },
+      isInvalid() {
+        return this.errors.length > 0;
       },
     },
     methods: {

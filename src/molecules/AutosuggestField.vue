@@ -1,16 +1,18 @@
 <template>
-  <gel-form-field :id="inputId"
-                  :label="label"
-                  :helpText="helpText"
-                  :required="required"
-                  :errors="validationErrors"
-                  :helpTextDetails="helpTextDetails">
-    <gel-input-autosuggest :id="inputId"
-                    :errors="validationErrors"
-                    :options="options"
-                    :value="value"
-                    @input="updateValue(arguments[0])"
-                    @blur="dirty = true"
+  <gel-form-field
+    :errors="validationErrors"
+    :id="inputId"
+    :helpText="helpText"
+    :label="label"
+    :required="required"
+  >
+    <gel-input-autosuggest
+      :errors="validationErrors"
+      :id="inputId"
+      :options="options"
+      :value="value"
+      @input="updateValue(arguments[0])"
+      @blur="dirty = true"
     />
   </gel-form-field>
 </template>
@@ -29,7 +31,6 @@
         default: '',
       },
       helpText: { type: String },
-      helpTextDetails: { type: String },
       errors: { type: Array },
       id: { type: String },
       value: String,
