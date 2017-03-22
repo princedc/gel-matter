@@ -5,6 +5,7 @@
     :type="type"
     :class="classes"
     :placeholder="placeholder"
+    :prefix="prefix"
     :value="value"
     @input="updateValue($event.target.value)"
     @blur="$emit('blur')"
@@ -28,6 +29,7 @@
         default() { return []; },
       },
       placeholder: String,
+      prefix: String,
     },
     computed: {
       classes() {

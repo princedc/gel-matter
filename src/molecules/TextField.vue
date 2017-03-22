@@ -14,6 +14,7 @@
       :errors="validationErrors"
       :value="value"
       :type="type"
+      prefix="test"
       :placeholder="placeholder"
       @input="updateValue(arguments[0])"
       @blur="dirty = true"
