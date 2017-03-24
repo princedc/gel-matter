@@ -1,12 +1,14 @@
 <template>
-    <input :id="id"
-           :type="type"
-           v-bind:value="value"
-           v-on:input="updateValue($event.target.value)"
-           :class="classes"
-           @blur="$emit('blur')"
-           :placeholder="placeholder"
-    />
+  <input
+    :aria-invalid="isInvalid"
+    :id="id"
+    :type="type"
+    :class="classes"
+    :placeholder="placeholder"
+    :value="value"
+    @input="updateValue($event.target.value)"
+    @blur="$emit('blur')"
+  />
 </template>
 
 <script>
@@ -31,8 +33,11 @@
       classes() {
         return {
           'gel-input': true,
-          'is-invalid': this.errors.length > 0,
+          'is-invalid': this.isInvalid,
         };
+      },
+      isInvalid() {
+        return this.errors.length > 0;
       },
     },
     methods: {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  const validSizes = ['small', 'medium', 'large'];
+  const validSizes = ['small', 'medium', 'large', 'text'];
 
   export default {
     props: {
@@ -60,10 +60,9 @@
     width: 64px;
   }
 
-  .gel-icon--inline {
-    width: 16px;
-    height: 16px;
-    position: relative;
-    top: 2px;
+  .gel-icon--text {
+    height: 1em;
+    width: 1em;
+    vertical-align: text-top;
   }
 </style>
