@@ -1,11 +1,12 @@
 <template>
   <div :class="classes">
     <gel-icon set="core" icon="down" size="small" class="gel-select__icon" />
-  <select class=""
-          :value="value"
-          @change="updateValue($event.target.value)"
-          @focus="selectIsFocused = true"
-          @blur="handleBlur"
+  <select
+    :id="id"
+    :value="value"
+    @change="updateValue($event.target.value)"
+    @focus="selectIsFocused = true"
+    @blur="handleBlur"
   >
     <option v-for="option in options" :value="option.value">{{ option.label }}</option>
   </select>
@@ -23,6 +24,7 @@
       };
     },
     props: {
+      id: String,
       value: String,
       options: Array,
       errors: {

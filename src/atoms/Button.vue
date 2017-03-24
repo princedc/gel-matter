@@ -5,6 +5,7 @@
     :type="buttonType"
     v-on:click="handleClick"
     :disabled="disabled"
+    :aria-disabled="disabled"
   >
     <div class="gel-button__icon" v-if="icon || $slots.icon">
       <slot name="icon">
