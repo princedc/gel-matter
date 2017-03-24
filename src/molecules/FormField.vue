@@ -7,7 +7,7 @@
       </label>
       <slot></slot>
       <div class="gel-form-field__errors" v-if="errors && errors.length">
-        <p v-for="error in errors.slice(0, 1)" class="gel-form-field__error">{{ error }}</p>
+        <p v-for="error in errors.slice(0, 1)" class="gel-form-field__error" role="alert">{{ error }}</p>
       </div>
     </div>
     <div class="gel-layout__item gel-6/12@m gel-5/12@xxl" v-if="helpText || $slots.helpText">

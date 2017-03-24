@@ -10,7 +10,7 @@
         <div class="gel-layout">
           <div class="gel-layout__item gel-1/1">
             <gel-notification :type="type" @dismiss="handleDismiss" :dismissible="dismissible"
-                :light="light">
+                :light="light" role="alert">
               <slot>{{ message }}</slot>
             </gel-notification>
           </div>
