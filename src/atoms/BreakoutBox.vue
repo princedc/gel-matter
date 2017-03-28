@@ -1,6 +1,6 @@
 <template>
     <div class="gel-breakout-box">
-      <gel-icon class="gel-icon gel-icon--inline" color="#404040" set="core" icon="info" size="small" />
+      <gel-icon class="gel-breakout-box__icon" color="#404040" set="core" icon="info" size="text" />
       <slot></slot>
     </div>
 </template>
@@ -28,11 +28,13 @@
       @include gel-typography('long-primer');
       color: #404040;
     }
+  }
 
-    .gel-icon {
-      float: left;
-      display: inline;
-      margin-right: 8px;
-    }
+  .gel-breakout-box__icon {
+    float: left;
+    display: inline;
+    margin-right: 8px;
+    position: relative;
+    top: 1px;
   }
 </style>

@@ -1,14 +1,15 @@
 <template>
   <div style="position: relative;" class="gel-tags" :class="errors && errors.length ? 'is-invalid' : ''">
-    <v-select :id="id"
-              multiple
-              :value="value"
-              :options="options"
-              v-on:input="updateValue(arguments[0])"
-              pushTags
-              taggable
-              forceLowercase
-              hideSelectedOptions
+    <v-select
+      multiple
+      pushTags
+      taggable
+      forceLowercase
+      hideSelectedOptions
+      :id="id"
+      :value="value"
+      :options="options"
+      @input="updateValue(arguments[0])"
     />
   </div>
 </template>
