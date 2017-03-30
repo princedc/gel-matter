@@ -6,7 +6,7 @@
           <slot></slot>
         </div>
         <div class="gel-beta-nav__cta gel-1/1 gel-1/3@l">
-          <gel-link-button href="https://www.bbc.co.uk/gel">
+          <gel-link-button href="https://www.bbc.co.uk/gel" type="secondary">
             Go the the GEL site
           </gel-link-button>
         </div>

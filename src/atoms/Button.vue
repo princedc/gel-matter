@@ -9,7 +9,7 @@
   >
     <div class="gel-button__icon" v-if="icon || $slots.icon">
       <slot name="icon">
-        <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small"></gel-icon>
+        <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="text"></gel-icon>
       </slot>
     </div>
 
@@ -21,7 +21,7 @@
 <script>
   import GelIcon from './Icon.vue';
 
-  const allowedTypes = ['primary', 'secondary', 'publish', 'minor', 'danger'];
+  const allowedTypes = ['primary', 'secondary', 'publish', 'minor', 'danger', 'custom'];
 
   export default {
     components: { GelIcon },
@@ -69,7 +69,7 @@
   @import '../common';
 
   .gel-button {
-    border: none;
+    border: solid 1px transparent;
     padding: 16px;
     @include gel-typography('long-primer-bold');
     cursor: pointer;
@@ -87,16 +87,18 @@
 
   .gel-button--primary {
     background: $gel-color--text;
+    border-color: $gel-color--text;
     color: $gel-color--white;
     transition: background-color 200ms ease;
 
     &:hover:not(.is-disabled) {
       background-color: $gel-color--black;
+      color: $gel-color--white;
     }
   }
 
   .gel-button--secondary {
-    border: solid 1px $gel-color--text;
+    border-color: $gel-color--text;
     color: $gel-color--text;
     background: transparent;
   }

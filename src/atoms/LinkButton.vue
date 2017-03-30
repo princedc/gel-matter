@@ -1,5 +1,5 @@
 <template>
-  <a class="gel-button gel-button-secondary gel-long-primer-bold" :href="href">
+  <a class="gel-button gel-long-primer-bold" :class="classes" :href="href">
     <span class="gel-button__icon" v-if="icon || $slots.icon">
       <slot name="icon">
         <gel-icon class="gel-button__icon" :set="icon.set" :icon="icon.icon" size="small" />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  const allowedTypes = ['primary', 'secondary'];
+  const allowedTypes = ['primary', 'secondary', 'publish', 'minor', 'danger', 'custom'];
 
   export default {
     props: {
@@ -45,8 +45,7 @@
 
   a.gel-button {
     @include gel-typography('long-primer-bold');
-    color: $gel-color--text;
-    border: solid 1px $gel-color--text;
+    border: solid 1px;
     padding: 16px;
     display: inline-block;
     text-decoration: none;
@@ -54,7 +53,6 @@
 
     &:hover {
       text-decoration: underline;
-      color: $gel-color--text;
     }
   }
 </style>
